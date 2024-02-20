@@ -13,10 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\study">
+      <UniqueIdentifier>{cfeb5ad8-cc13-4fda-ba6b-a24f1d8c47ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CppStudy006.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="study09.ixx">
+      <Filter>Source Files\study</Filter>
+    </ClCompile>
+    <ClCompile Include="study09.cpp">
+      <Filter>Source Files\study</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

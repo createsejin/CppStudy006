@@ -1,11 +1,13 @@
 // CppStudy006.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+import std;
+import study09;
 
 int main()
 {
     std::cout << "Hello World!\n";
+    study09::study001::study008();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
