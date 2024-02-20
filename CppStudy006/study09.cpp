@@ -154,7 +154,8 @@ namespace study09::study001 {
     }
 
     Spreadsheet::Spreadsheet(const size_t width, const size_t height)
-        : width(width), height(height) {
+        : width(std::min(width, MaxWidth)),
+        height(std::min(height, MaxHeight)) {
         if (debug1)
             cout << "normal constructor: " << call_counter++ << endl;
         this->cells = new SpreadsheetCell * [this->width];
@@ -360,4 +361,301 @@ namespace study09::study001 {
         cout << TextHolder{ "Hello World!" }.getText() << endl; // rvalue reference qualified method call
         cout << std::move(text_holder).getText() << endl; // rvalue reference qualified method call
     } // p.469 부터 시작
+    void study009() {
+        //Spreadsheet s1; // 컴파일 에러. 디폴트 생성자와 디폴트값이 모두 지정된 생성자 둘 중 어느것을 쓸지 애매하다.
+        // 반드시 둘 중 하나를 쓰도록 생성자를 정의해야한다.
+        Spreadsheet s2{ 5 };
+        Spreadsheet s3{ 5 ,6 };
+        //Spreadsheet s4 = 5; // explicit 키워드 때문에 암묵적 변환이 허용되지 않는다.
+    }
+}
+
+namespace study09::study02
+{
+    void SpreadsheetCell::setColor(const Color color) { this->color = color; }
+    auto SpreadsheetCell::getColor() const -> Color { return color; }
+
+    // ----------------------------------SpreadsheetCell----------------------------------------- //
+    std::string SpreadsheetCell::doubleToString(const double value) {
+        return to_string(value);
+    }
+    double SpreadsheetCell::stringToDouble(const std::string_view inString) {
+        double number{ 0 };
+        from_chars(inString.data(), inString.data() + inString.size(), number);
+        return number;
+    }
+
+    SpreadsheetCell::SpreadsheetCell(const double initial_value) : value{ initial_value } {}
+    SpreadsheetCell::SpreadsheetCell(const std::string_view initial_value) { setValue(initial_value); }
+
+    void SpreadsheetCell::setValue(const double value) {
+        this->value = value;
+        printCell(*this);
+    }
+    double SpreadsheetCell::getValue() const {
+        numAccesses++; // mutable keyword p.464
+        return value;
+    }
+
+    void SpreadsheetCell::setValue(const std::string_view inString) { value = stringToDouble(inString); }
+    std::string SpreadsheetCell::getString() const {
+        numAccesses++;
+        return doubleToString(value);
+    }
+
+    void SpreadsheetCell::printCell(const SpreadsheetCell& cell) {
+        cout << cell.getString() << endl;
+    }
+    void SpreadsheetCell::printCell() const { cout << this->getString() << endl; }
+
+    auto SpreadsheetCell::add(const SpreadsheetCell& cell) const -> SpreadsheetCell {
+        return SpreadsheetCell{ getValue() + cell.getValue() };
+    }
+
+    // SpreadsheetCell SpreadsheetCell::operator+(const SpreadsheetCell& cell) const {
+    //     return SpreadsheetCell{getValue() + cell.getValue()};
+    // }
+
+    SpreadsheetCell SpreadsheetCell::operator+(const double rhs) const {
+        return SpreadsheetCell{ getValue() + rhs };
+    }
+
+    SpreadsheetCell SpreadsheetCell::operator/(const SpreadsheetCell& cell) const {
+        if (cell.getValue() == 0) {
+            throw invalid_argument{ "Dvide by zero \u25A1" };
+        }
+        return SpreadsheetCell{ getValue() / cell.getValue() };
+    }
+
+    SpreadsheetCell SpreadsheetCell::operator-(const SpreadsheetCell& cell) const {
+        return SpreadsheetCell{ getValue() - cell.getValue() };
+    }
+
+    SpreadsheetCell SpreadsheetCell::operator*(const SpreadsheetCell& cell) const {
+        return SpreadsheetCell{ getValue() * cell.getValue() };
+    }
+
+    SpreadsheetCell& SpreadsheetCell::operator+=(const SpreadsheetCell& rhs) {
+        setValue(getValue() + rhs.getValue());
+        return *this;
+    }
+    SpreadsheetCell& SpreadsheetCell::operator-=(const SpreadsheetCell& rhs) {
+        setValue(getValue() - rhs.getValue());
+        return *this;
+    }
+    SpreadsheetCell& SpreadsheetCell::operator*=(const SpreadsheetCell& rhs) {
+        setValue(getValue() * rhs.getValue());
+        return *this;
+    }
+    SpreadsheetCell& SpreadsheetCell::operator/=(const SpreadsheetCell& rhs) {
+        if (rhs.getValue() == 0) throw invalid_argument{ "Dvide by zero \u25A1" };
+        setValue(getValue() / rhs.getValue());
+        return *this;
+    }
+
+    bool SpreadsheetCell::operator==(const SpreadsheetCell& rhs) const {
+        return getValue() == rhs.getValue();
+    }
+
+    std::partial_ordering SpreadsheetCell::operator<=>(const SpreadsheetCell& rhs) const {
+        return getValue() <=> rhs.getValue();
+    }
+
+    // --------------------------------Spreadsheet--------------------------------------------- //
+    void Spreadsheet::verifyCoordinate(const size_t x, const size_t y) const {
+        if (x >= width) {
+            throw out_of_range{ std::format("{} must be less than {}.", x, width) };
+        }
+        if (y >= height) {
+            throw out_of_range{ std::format("{} must be less than {}.", y, height) };
+        }
+    }
+    // 이동 대입 연산자
+    Spreadsheet& Spreadsheet::operator=(Spreadsheet&& rhs) noexcept {
+        if (debug1)
+            cout << "move assignment operator: " << call_counter++ << endl;
+        // if (this == &rhs) return *this;
+        // cleanup(); // 현재 객체의 이전 메모리를 해제한다. 이것은 덮어쓰기에 의한 메모리 누수를 방지하기 위함이다.
+        // moveFrom(rhs); // 소유권을 이전하고 원본 객체의 동적 할당된 cells 포인터를 nullptr로 할당하여
+        // // 원본 객체의 소멸자가 원본 데이터를 해제하는걸 방지한다.
+        swap(*this, rhs);
+        return *this;
+    }
+
+    Spreadsheet::Cell::Cell(const double initial_value)
+        : value(initial_value) {}
+
+    Spreadsheet::Spreadsheet(const Spreadsheet& src)
+        : Spreadsheet(src.width, src.height, src.theApp) {
+        if (debug1)
+            cout << "copy constructor: " << call_counter++ << endl;
+        for (size_t i{ 0 }; i < this->width; ++i) {
+            for (size_t j{ 0 }; j < this->height; ++j) {
+                this->cells[i][j] = src.cells[i][j];
+            }
+        }
+    }
+
+    Spreadsheet& Spreadsheet::operator=(const Spreadsheet& rhs) { // p.440
+        if (debug1)
+            cout << "copy assignment operator: " << call_counter++ << endl;
+        // swap을 이용
+        if (this == &rhs) { return *this; }
+        Spreadsheet temp{ rhs };
+        swap(temp); // 이때 swap이 되면 임시 객체가 제거된다.
+        return *this;
+    }
+
+    void Spreadsheet::swap(Spreadsheet& other) noexcept {
+        // other
+        std::swap(this->name, other.name);
+        std::swap(this->width, other.width);
+        std::swap(this->height, other.height);
+        std::swap(this->cells, other.cells);
+    }
+    void Spreadsheet::swap(Spreadsheet& first, Spreadsheet& second) noexcept {
+        // second를 first로 swap한다.
+        first.swap(second);
+    }
+
+    Spreadsheet::Spreadsheet(const size_t width, const size_t height,
+        const SpreadsheetApplication& theApp)
+        : id(sheet_counter++), width(std::min(width, MaxWidth)),
+        height(std::min(height, MaxHeight)), theApp(theApp) {
+        if (debug1)
+            cout << "normal constructor: " << call_counter++ << endl;
+        this->cells = new Cell * [this->width];
+        for (size_t i{ 0 }; i < this->width; ++i) {
+            this->cells[i] = new Cell[this->height];
+        }
+    }
+
+    Spreadsheet::~Spreadsheet() {
+        if (debug1)
+            cout << "destructor: " << call_counter++ << endl;
+        for (size_t i{ 0 }; i < width; ++i) {
+            delete[] cells[i];
+        }
+        delete[] cells;
+        cells = nullptr;
+        width = height = 0;
+    }
+
+    void Spreadsheet::setCellAt(const size_t x, const size_t y, const Cell& cell) const {
+        verifyCoordinate(x, y);
+        this->cells[x][y] = cell;
+    }
+    auto Spreadsheet::getCellAt(const size_t x, const size_t y) -> Cell& {
+        return const_cast<Cell&>(as_const(*this).getCellAt(x, y));
+        // 먼저 *this(현재 객체)를 const 객체로 캐스팅한다. 그다음에 const 버전의 getCellAt()을 호출한다.
+        // 그러면 리턴값으로 const SpreadsheetCell&가 리턴되는데, 이 값을 다시 const_cast를 이용해서
+        // non-const SpreadsheetCell&으로 캐스팅해서 리턴한다. p.466
+    }
+    // p.465 const 기반 오버로딩
+    auto Spreadsheet::getCellAt(const size_t x, const size_t y) const -> const Cell& {
+        verifyCoordinate(x, y);
+        return cells[x][y];
+    }
+
+    void Spreadsheet::set_debug1(const bool value) { debug1 = value; }
+    auto Spreadsheet::get_debug1() -> bool { return debug1; }
+
+    auto Spreadsheet::getId() const -> size_t { return id; }
+
+    void Spreadsheet::Cell::setColor(const Color color) { this->color = color; }
+    auto Spreadsheet::Cell::getColor() const -> Color { return color; }
+
+    // ----------------------------------------------------------------------------------------- //
+    std::string Spreadsheet::Cell::doubleToString(const double value) {
+        return to_string(value);
+    }
+    double Spreadsheet::Cell::stringToDouble(const std::string_view inString) {
+        double number{ 0 };
+        from_chars(inString.data(), inString.data() + inString.size(), number);
+        return number;
+    }
+
+    Spreadsheet::Cell::Cell(const std::string_view initial_value) { setValue(initial_value); }
+
+    void Spreadsheet::Cell::setValue(const double value) {
+        this->value = value;
+        printCell(*this);
+    }
+    double Spreadsheet::Cell::getValue() const {
+        numAccesses++; // mutable keyword p.464
+        return value;
+    }
+
+    void Spreadsheet::Cell::setValue(const std::string_view inString) { value = stringToDouble(inString); }
+    std::string Spreadsheet::Cell::getString() const {
+        numAccesses++;
+        return doubleToString(value);
+    }
+
+    void Spreadsheet::Cell::printCell(const Cell& cell) {
+        cout << cell.getString() << endl;
+    }
+    void Spreadsheet::Cell::printCell() const { cout << this->getString() << endl; }
+    // ----------------------------------------------------------------------------------------- //
+    // global function
+    SpreadsheetCell operator+(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+        //return SpreadsheetCell{lhs.getValue() + rhs.getValue()};
+        auto result{ lhs }; // p.489
+        result += rhs;
+        return result;
+    }
+    // bool operator==(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    //     return lhs.getValue() == rhs.getValue();
+    // }
+    // bool operator<(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    //     return lhs.getValue() < rhs.getValue();
+    // }
+    // bool operator>(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    //     return lhs.getValue() > rhs.getValue();
+    // }
+    // bool operator!=(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    //     return !(lhs == rhs);
+    // }
+    // bool operator<=(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    //     return !(lhs > rhs);
+    // }
+    // bool operator>=(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    //     return !(lhs < rhs);
+    // }
+
+    void study010() {
+        Spreadsheet::Cell myCell{ 5 };
+        myCell.setColor(Spreadsheet::Cell::Color::Blue);
+        [[maybe_unused]] auto color{ myCell.getColor() };
+    }
+    void study011() {
+        const SpreadsheetCell myCell{ 4 }, anotherCell{ 5 };
+        //const SpreadsheetCell aThirdCell {myCell.add(anotherCell)};
+        const SpreadsheetCell aThirdCell{ myCell + anotherCell };
+        [[maybe_unused]] const auto aFourthCell{ aThirdCell.add(anotherCell) };
+    }
+    void study012() {
+        const SpreadsheetCell myCell{ 4 };
+        myCell.printCell();
+        const string str{ "6" };
+        // auto aThirdCell = myCell + string_view{str}; // 변환 생성자 암묵적 변환 허용시 가능
+        // aThirdCell = myCell + 5.6;
+        // aThirdCell = myCell + 4;
+    }
+    // p.488 축약형 연산자
+    void study013() {
+        const SpreadsheetCell myCell{ 6.7 };
+        SpreadsheetCell aThirdCell{ 5 };
+        aThirdCell -= myCell;
+        aThirdCell += 5.4;
+        // p.490 비교 연산자
+        if (myCell > aThirdCell || myCell < 10) {
+            cout << "myCell is greater than aThirdCell" << endl;
+        }
+        if (myCell == 10) { cout << "myCell is equal to 10" << endl; }
+        if (myCell != 10) { cout << "myCell is not equal to 10" << endl; }
+        //if (10 == myCell) { cout << "10 is equal to myCell" << endl; } // 왜 안되노 ㅡㅡ
+        // p.492 부터
+    }
+
 }
