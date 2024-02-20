@@ -23,7 +23,7 @@ export namespace study09::study001 {
         [[nodiscard]] double getValue() const;
 
         void setValue(std::string_view inString);
-        [[nodiscard]] std::string getString() const;
+        [[nodiscard]] inline std::string getString() const;
 
         static void printCell(const SpreadsheetCell& cell);
         void printCell() const;
