@@ -453,9 +453,13 @@ namespace study09::study02
         return *this;
     }
 
-    bool SpreadsheetCell::operator==(const SpreadsheetCell& rhs) const {
+    /*bool SpreadsheetCell::operator==(const SpreadsheetCell& rhs) const {
         return getValue() == rhs.getValue();
-    }
+    }*/
+    /*std::partial_ordering SpreadsheetCell::operator<=>(const SpreadsheetCell& rhs) const
+    {
+        return getValue() <=> rhs.getValue();
+    }*/
 
     // --------------------------------Spreadsheet--------------------------------------------- //
     void Spreadsheet::verifyCoordinate(const size_t x, const size_t y) const {
@@ -619,11 +623,6 @@ namespace study09::study02
     //     return !(lhs < rhs);
     // }
 
-    std::partial_ordering SpreadsheetCell::operator<=>(const SpreadsheetCell& rhs) const
-    {
-        return getValue() <=> rhs.getValue();
-    }
-
     static void study010() {
         Spreadsheet::Cell myCell{ 5 };
         myCell.setColor(Spreadsheet::Cell::Color::Blue);
@@ -657,6 +656,9 @@ namespace study09::study02
         if (myCell != 10) { cout << "myCell is not equal to 10" << endl; }
         if (10 == myCell) { cout << "10 is equal to myCell" << endl; }
         // p.492 บฮลอ
+        if (myCell < 10) { cout << "myCell < 10" << endl; }
+        if (10 < myCell) { cout << "10 < myCell" << endl; }
+        if (10 != myCell) { cout << "10 != myCell" << endl; }
     }
 
     

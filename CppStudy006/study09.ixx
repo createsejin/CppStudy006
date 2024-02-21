@@ -116,9 +116,9 @@ export namespace study09::study02
         SpreadsheetCell& operator-=(const SpreadsheetCell& rhs);
         SpreadsheetCell& operator*=(const SpreadsheetCell& rhs);
         SpreadsheetCell& operator/=(const SpreadsheetCell& rhs);
-        [[nodiscard]] bool operator==(const SpreadsheetCell& rhs) const; // p.491 참조
+        [[nodiscard]] bool operator==(const SpreadsheetCell& rhs) const = default; // p.491 참조
         // p.491 C++20부터 도입된 비교 연산자 자동 지원. 이거 하나만 만들면 나머지 6가지 비교 연산자를 자동으로 만들어준다.
-        [[nodiscard]] std::partial_ordering operator<=>(const SpreadsheetCell& rhs) const;
+        [[nodiscard]] std::partial_ordering operator<=>(const SpreadsheetCell& rhs) const = default;
     };
 
     class SpreadsheetApplication {};
