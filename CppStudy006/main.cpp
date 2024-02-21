@@ -6,8 +6,8 @@ import study09;
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    study09::study001::study008();
+    std::cout << "Program start" << std::endl;
+    study09::study02::study013();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

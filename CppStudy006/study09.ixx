@@ -1,7 +1,7 @@
 export module study09;
 import std;
 
-export namespace study09::study001 {
+export namespace study09::study01 {
     class SpreadsheetCell {
         double value{};
         mutable size_t numAccesses{ 0 };
@@ -50,7 +50,7 @@ export namespace study09::study001 {
         Spreadsheet& operator=(Spreadsheet&& rhs) noexcept; // 이동 대입 연산자
         void swap(Spreadsheet& other) noexcept;
         static void swap(Spreadsheet& first, Spreadsheet& second) noexcept;
-        Spreadsheet(size_t width, size_t height);
+        Spreadsheet(size_t width = 100, size_t height = 100);
         ~Spreadsheet();
         void setCellAt(size_t x, size_t y, const SpreadsheetCell& cell) const;
         [[nodiscard]] auto getCellAt(size_t x, size_t y) -> SpreadsheetCell&;
@@ -194,4 +194,6 @@ export namespace study09::study02
         static void printCell(const Cell& cell);
         void printCell() const;
     };
+
+    void study013();
 }

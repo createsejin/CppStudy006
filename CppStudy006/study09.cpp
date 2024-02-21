@@ -2,7 +2,7 @@ module study09;
 
 using namespace std;
 
-namespace study09::study001 {
+namespace study09::study01 {
     // ----------------------------------SpreadsheetCell----------------------------------------- //
     std::string SpreadsheetCell::doubleToString(const double value) {
         return to_string(value);
@@ -196,13 +196,13 @@ namespace study09::study001 {
 
     // ----------------------------------------------------------------------------------------- //
 
-    void helper(std::string&& message) {
+    static void helper(std::string&& message) {
         cout << std::format("handleMessage with rvalue reference: {}", message) << endl;
     }
-    void handleMessage(const string& message) {
+    static void handleMessage(const string& message) {
         cout << std::format("handleMessage with lvalue reference: {}", message) << endl;
     }
-    void handleMessage(string&& message) {
+    static void handleMessage(string&& message) {
         //helper(message); // 이렇게 하면 함수의 매개변수인 string&& message는 매개변수일때에는 엄밀히는 lvalue이기 때문에
         // rvalue를 받는 helper 함수에 message를 전달하면 컴파일 오류가 발생한다.
         // 따라서 다음과 같이 std::move를 이용해서 lvalue를 rvalue로 캐스팅 해야한다.
@@ -221,7 +221,7 @@ namespace study09::study001 {
         //handleMessage(std::move(a)); // 이거는 const라서 move를 써도 그냥 복제되버린다. 즉, move의 효과가 아예 없는샘이 된다.
         // 즉, 이 때에는 그냥 handleMessage(a)를 해서 좌측값(lvalue) 레퍼런스를 받는 함수를 써야한다.
     }
-    void study002() {
+    static void study002() {
         // p.449
         //int& i {2}; // Non-const lvalue reference 'i' to type int cannot bind to rvalue of type int
         int&& i{ 2 };
@@ -244,7 +244,7 @@ namespace study09::study001 {
     }
 
     //p.454 Spreadsheet의 이동 연산자 테스트하기
-    Spreadsheet createObject() {
+    static Spreadsheet createObject() {
         return Spreadsheet{ 3, 2 };
     }
     void study004() {
@@ -311,7 +311,7 @@ namespace study09::study001 {
     }
 
     // p.463 const 메서드
-    void study006() {
+    static void study006() {
         SpreadsheetCell myCell{ 5 };
         cout << myCell.getValue() << endl;
         myCell.setValue("6");
@@ -326,7 +326,7 @@ namespace study09::study001 {
     }
 
     // p.466 const 기반 메서드 오버로딩
-    void study007() {
+    static void study007() {
         auto* sheet1_ptr{ new Spreadsheet(5, 6) };
         [[maybe_unused]] auto& cell1{ sheet1_ptr->getCellAt(1, 1) };
         // ㄴ non-const getCellAt 메서드 호출
@@ -455,10 +455,6 @@ namespace study09::study02
 
     bool SpreadsheetCell::operator==(const SpreadsheetCell& rhs) const {
         return getValue() == rhs.getValue();
-    }
-
-    std::partial_ordering SpreadsheetCell::operator<=>(const SpreadsheetCell& rhs) const {
-        return getValue() <=> rhs.getValue();
     }
 
     // --------------------------------Spreadsheet--------------------------------------------- //
@@ -598,7 +594,7 @@ namespace study09::study02
     void Spreadsheet::Cell::printCell() const { cout << this->getString() << endl; }
     // ----------------------------------------------------------------------------------------- //
     // global function
-    SpreadsheetCell operator+(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+    static SpreadsheetCell operator+(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
         //return SpreadsheetCell{lhs.getValue() + rhs.getValue()};
         auto result{ lhs }; // p.489
         result += rhs;
@@ -623,18 +619,23 @@ namespace study09::study02
     //     return !(lhs < rhs);
     // }
 
-    void study010() {
+    std::partial_ordering SpreadsheetCell::operator<=>(const SpreadsheetCell& rhs) const
+    {
+        return getValue() <=> rhs.getValue();
+    }
+
+    static void study010() {
         Spreadsheet::Cell myCell{ 5 };
         myCell.setColor(Spreadsheet::Cell::Color::Blue);
         [[maybe_unused]] auto color{ myCell.getColor() };
     }
-    void study011() {
+    static void study011() {
         const SpreadsheetCell myCell{ 4 }, anotherCell{ 5 };
         //const SpreadsheetCell aThirdCell {myCell.add(anotherCell)};
         const SpreadsheetCell aThirdCell{ myCell + anotherCell };
         [[maybe_unused]] const auto aFourthCell{ aThirdCell.add(anotherCell) };
     }
-    void study012() {
+    static void study012() {
         const SpreadsheetCell myCell{ 4 };
         myCell.printCell();
         const string str{ "6" };
@@ -654,8 +655,9 @@ namespace study09::study02
         }
         if (myCell == 10) { cout << "myCell is equal to 10" << endl; }
         if (myCell != 10) { cout << "myCell is not equal to 10" << endl; }
-        //if (10 == myCell) { cout << "10 is equal to myCell" << endl; } // 왜 안되노 ㅡㅡ
+        if (10 == myCell) { cout << "10 is equal to myCell" << endl; }
         // p.492 부터
     }
 
+    
 }
