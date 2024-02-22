@@ -27,7 +27,13 @@ namespace person01
         void set_initial(std::string_view initial);
         void print_info() const;
         void swap(Person& other) noexcept;
-        [[nodiscard]] std::partial_ordering operator<=>(const Person& rhs) const = default;
+        //[[nodiscard]] std::weak_ordering operator<=>(const Person& rhs) const = default;
+        bool operator==(const Person& rhs);
+        bool operator!=(const Person& rhs);
+        bool operator<(const Person& rhs);
+        bool operator>=(const Person& rhs);
+        bool operator>(const Person& rhs);
+        bool operator<=(const Person& rhs);
     };
     void swap(Person& first, Person& second) noexcept;
 

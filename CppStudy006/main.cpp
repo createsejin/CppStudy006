@@ -6,7 +6,7 @@ import person;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    person01::study002();
+    person01::study001();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
