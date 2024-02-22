@@ -13,6 +13,10 @@ namespace person01
     public:
         Person();
         ~Person();
+        Person(const Person& person) = default;
+        Person& operator=(const Person& rhs) = default;
+        Person(Person&& rhs) noexcept;
+        Person& operator=(Person&& rhs) noexcept;
         Person(std::string_view first_name, std::string_view last_name);
         Person(std::string_view first_name, std::string_view last_name, std::string_view initial);
         [[nodiscard]] auto get_first_name() -> std::string&;
@@ -22,7 +26,10 @@ namespace person01
         [[nodiscard]] auto get_initial() -> std::string&;
         void set_initial(std::string_view initial);
         void print_info() const;
+        void swap(Person& other) noexcept;
+        [[nodiscard]] std::partial_ordering operator<=>(const Person& rhs) const = default;
     };
+    void swap(Person& first, Person& second) noexcept;
 
     export void study001();
     export void study002();

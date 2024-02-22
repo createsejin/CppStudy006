@@ -16,6 +16,7 @@ namespace person01
         call_counter++;
         cout << std::format("Calling Destructor: {}", call_counter) << endl;
     }
+    
     Person::Person(const std::string_view first_name, const std::string_view last_name)
         : Person(first_name, last_name, "")
     {
@@ -45,6 +46,26 @@ namespace person01
         cout << initial << ": " << first_name << " " << last_name << endl;
     }
 
+    void Person::swap(Person& other) noexcept {
+        std::swap(this->first_name, other.first_name);
+        std::swap(this->last_name, other.last_name);
+        std::swap(this->initial, other.initial);
+    }       
+
+    void swap(Person& first, Person& second) noexcept {
+        first.swap(second);
+    }
+
+    Person& Person::operator=(Person&& rhs) noexcept
+    {
+        person01::swap(*this, rhs);
+        return *this;
+    }
+
+    Person::Person(Person&& rhs) noexcept {
+        person01::swap(*this, rhs);
+    }
+
     void study001() {
         const auto* person1 = new Person("SeJin"sv, "Bae"sv);
         const auto person3 = std::make_unique<Person>("DeWo"sv, "Lee"sv);
@@ -54,7 +75,7 @@ namespace person01
         phoneBook[1] = *person1;
         phoneBook[2] = *person3;
         for (size_t i{ 0 }; i < book_size; ++i) {
-            cout << phoneBook[i].get_first_name() << " " << phoneBook[i].get_last_name() << endl;
+            phoneBook[i].print_info();
         }
         delete[] phoneBook;
         phoneBook = nullptr;
@@ -64,7 +85,7 @@ namespace person01
         auto* person1 = new Person("SeJin"sv, "Bae"sv);
         person1->print_info();
         delete person1;
-        auto person2 = std::make_unique<Person>("SeHee"sv, "Bae"sv, "UU");
+        auto person2 = std::make_unique<Person>("SeHee"sv, "Bae"sv, "UU"sv);
         person2->print_info();
     }
 }
