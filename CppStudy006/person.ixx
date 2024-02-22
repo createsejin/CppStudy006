@@ -8,17 +8,20 @@ namespace person01
         static inline unsigned call_counter{ 0 };
         std::string first_name;
         std::string last_name;
+        std::string initial;
     public:
+        void make_initial();
         Person();
-        ~Person();
-        Person(const Person& person);
-        Person& operator=(const Person& rhs);
         Person(std::string_view first_name, std::string_view last_name);
+        Person(std::string_view first_name, std::string_view last_name, std::string_view initial);
         [[nodiscard]] auto get_first_name() -> std::string&;
         void set_first_name(std::string_view first_name);
         [[nodiscard]] auto get_last_name() -> std::string&;
         void set_last_name(std::string_view last_name);
+        [[nodiscard]] auto get_initial() -> std::string&;
+        void set_initial(std::string_view initial);
     };
 
     export void study001();
+    export void study002();
 }

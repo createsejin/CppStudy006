@@ -3,29 +3,23 @@ module person;
 using namespace std;
 namespace person01
 {
+    void Person::make_initial() {
+        std::string first_initial{ *first_name.begin() };
+        std::string last_initial{ *last_name.begin() };
+    }
     Person::Person() {
         call_counter++;
         cout << std::format("Calling Default Constructor: {}", call_counter) << endl;
-    }
-    Person::~Person() {
-        call_counter++;
-        cout << std::format("Calling Destructor: {}", call_counter) << endl;
-    }
-    Person::Person(const Person& person)
-        : Person(person.first_name, person.last_name)
-    {
-    }
-    Person& Person::operator=(const Person& rhs) {
-        if (this == &rhs) return *this;
-        first_name = rhs.first_name;
-        last_name = rhs.last_name;
-        return *this;
     }
     Person::Person(const std::string_view first_name, const std::string_view last_name)
         : first_name(first_name), last_name(last_name)
     {
         call_counter++;
         cout << std::format("Calling parameters Constructor: {}", call_counter) << endl;
+    }
+    Person::Person(std::string_view first_name, std::string_view last_name, std::string_view initial)
+        : first_name{first_name}, last_name{last_name}, initial{initial}
+    {
     }
     auto Person::get_first_name() -> std::string& { return first_name; }
 
@@ -36,6 +30,8 @@ namespace person01
     void Person::set_last_name(const std::string_view last_name) {
         this->last_name = last_name;
     }
+    auto Person::get_initial() -> std::string& { return initial; }
+    void Person::set_initial(std::string_view initial) { this->initial = initial; }
 
     void study001() {
         const auto* person1 = new Person("SeJin"sv, "Bae"sv);
@@ -50,5 +46,11 @@ namespace person01
         }
         delete[] phoneBook;
         phoneBook = nullptr;
+    }
+
+    void study002() {
+        auto* person1 = new Person("SeJin"sv, "Bae"sv);
+        person1->make_initial();
+        delete person1;
     }
 }
