@@ -131,6 +131,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="person.cpp" />
+    <ClCompile Include="person.ixx" />
     <ClCompile Include="study09.cpp" />
     <ClCompile Include="study09.ixx" />
   </ItemGroup>

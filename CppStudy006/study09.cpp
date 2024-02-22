@@ -661,5 +661,5 @@ namespace study09::study02
         if (10 != myCell) { cout << "10 != myCell" << endl; }
     }
 
-    
+    // p.496 안정된 인터페이스 만들기
 }
