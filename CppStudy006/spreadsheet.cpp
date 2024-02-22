@@ -1,3 +1,4 @@
+module;
 module spreadsheet;
 import std;
 using namespace std;
@@ -89,10 +90,10 @@ namespace spreadsheet01
 
     void Spreadsheet::Impl::verifyCoordinate(const size_t x, const size_t y) const {
         if (x >= width) {
-            throw std::out_of_range{ std::format("{} must be less than {}.", x, width) };
+            throw std::out_of_range{ format("{} must be less than {}.", x, width) };
         }
         if (y >= height) {
-            throw std::out_of_range{ std::format("{} must be less than {}.", y, height) };
+            throw std::out_of_range{ format("{} must be less than {}.", y, height) };
         }
     }
 
