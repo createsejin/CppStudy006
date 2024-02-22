@@ -1,5 +1,4 @@
 export module person;
-import person_impl;
 import std;
 
 namespace person01
