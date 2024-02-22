@@ -136,6 +136,10 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="person.cpp" />
+    <ClCompile Include="person_impl.cpp" />
+    <ClCompile Include="person_impl.ixx">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Default</CompileAs>
+    </ClCompile>
     <ClCompile Include="person.ixx" />
     <ClCompile Include="spreadsheet.cpp" />
     <ClCompile Include="spreadsheet.ixx" />

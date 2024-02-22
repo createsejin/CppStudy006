@@ -45,5 +45,11 @@
     <ClCompile Include="spreadsheet.cpp">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
+    <ClCompile Include="person_impl.ixx">
+      <Filter>Source Files\study09</Filter>
+    </ClCompile>
+    <ClCompile Include="person_impl.cpp">
+      <Filter>Source Files\study09</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

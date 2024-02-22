@@ -1,4 +1,5 @@
 export module person;
+import person_impl;
 import std;
 
 namespace person01
@@ -10,6 +11,8 @@ namespace person01
         std::string last_name;
         std::string initial;
         void make_initial();
+        class Impl;
+        std::unique_ptr<Impl> impl;
     public:
         Person();
         ~Person();

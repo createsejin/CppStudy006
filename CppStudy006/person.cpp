@@ -1,4 +1,3 @@
-module;
 module person;
 using namespace std;
 namespace person01
