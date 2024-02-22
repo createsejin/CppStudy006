@@ -1,4 +1,3 @@
-module;
 module spreadsheet;
 import std;
 using namespace std;
