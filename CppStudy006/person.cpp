@@ -1,22 +1,27 @@
+module;
 module person;
-
 using namespace std;
 namespace person01
 {
-    auto Person::make_initial() -> std::string {
+    void Person::make_initial() {
         std::string first_initial{ *first_name.begin() };
         std::string last_initial{ *last_name.begin() };
-        return first_initial + last_initial;
+        initial = first_initial + last_initial;
     }
     Person::Person() {
         call_counter++;
         cout << std::format("Calling Default Constructor: {}", call_counter) << endl;
     }
+    Person::~Person() {
+        call_counter++;
+        cout << std::format("Calling Destructor: {}", call_counter) << endl;
+    }
     Person::Person(const std::string_view first_name, const std::string_view last_name)
-        : Person(first_name, last_name, make_initial())
+        : Person(first_name, last_name, "")
     {
         call_counter++;
         cout << std::format("Calling parameters 2 Constructor: {}", call_counter) << endl;
+        make_initial();
     }
     Person::Person(std::string_view first_name, std::string_view last_name, std::string_view initial)
         : first_name{first_name}, last_name{last_name}, initial{initial}
