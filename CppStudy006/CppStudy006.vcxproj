@@ -133,6 +133,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="person.ixx" />
+    <ClCompile Include="spreadsheet.cpp" />
+    <ClCompile Include="spreadsheet.ixx" />
+    <ClCompile Include="spreadsheet_cell.cpp" />
+    <ClCompile Include="spreadsheet_cell.ixx" />
     <ClCompile Include="study09.cpp" />
     <ClCompile Include="study09.ixx" />
   </ItemGroup>

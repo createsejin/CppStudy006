@@ -33,5 +33,17 @@
     <ClCompile Include="person.ixx">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
+    <ClCompile Include="spreadsheet_cell.ixx">
+      <Filter>Source Files\study09</Filter>
+    </ClCompile>
+    <ClCompile Include="spreadsheet_cell.cpp">
+      <Filter>Source Files\study09</Filter>
+    </ClCompile>
+    <ClCompile Include="spreadsheet.ixx">
+      <Filter>Source Files\study09</Filter>
+    </ClCompile>
+    <ClCompile Include="spreadsheet.cpp">
+      <Filter>Source Files\study09</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
