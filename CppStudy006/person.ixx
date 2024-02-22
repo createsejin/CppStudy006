@@ -9,8 +9,8 @@ namespace person01
         std::string first_name;
         std::string last_name;
         std::string initial;
+        auto make_initial() -> std::string;
     public:
-        void make_initial();
         Person();
         Person(std::string_view first_name, std::string_view last_name);
         Person(std::string_view first_name, std::string_view last_name, std::string_view initial);
@@ -20,6 +20,7 @@ namespace person01
         void set_last_name(std::string_view last_name);
         [[nodiscard]] auto get_initial() -> std::string&;
         void set_initial(std::string_view initial);
+        void print_info() const;
     };
 
     export void study001();

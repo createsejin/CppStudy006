@@ -3,23 +3,26 @@ module person;
 using namespace std;
 namespace person01
 {
-    void Person::make_initial() {
+    auto Person::make_initial() -> std::string {
         std::string first_initial{ *first_name.begin() };
         std::string last_initial{ *last_name.begin() };
+        return first_initial + last_initial;
     }
     Person::Person() {
         call_counter++;
         cout << std::format("Calling Default Constructor: {}", call_counter) << endl;
     }
     Person::Person(const std::string_view first_name, const std::string_view last_name)
-        : first_name(first_name), last_name(last_name)
+        : Person(first_name, last_name, make_initial())
     {
         call_counter++;
-        cout << std::format("Calling parameters Constructor: {}", call_counter) << endl;
+        cout << std::format("Calling parameters 2 Constructor: {}", call_counter) << endl;
     }
     Person::Person(std::string_view first_name, std::string_view last_name, std::string_view initial)
         : first_name{first_name}, last_name{last_name}, initial{initial}
     {
+        call_counter++;
+        cout << std::format("Calling parameters 3 Constructor: {}", call_counter) << endl;
     }
     auto Person::get_first_name() -> std::string& { return first_name; }
 
@@ -32,6 +35,10 @@ namespace person01
     }
     auto Person::get_initial() -> std::string& { return initial; }
     void Person::set_initial(std::string_view initial) { this->initial = initial; }
+
+    void Person::print_info() const {
+        cout << initial << ": " << first_name << " " << last_name << endl;
+    }
 
     void study001() {
         const auto* person1 = new Person("SeJin"sv, "Bae"sv);
@@ -50,7 +57,9 @@ namespace person01
 
     void study002() {
         auto* person1 = new Person("SeJin"sv, "Bae"sv);
-        person1->make_initial();
+        person1->print_info();
         delete person1;
+        auto person2 = std::make_unique<Person>("SeHee"sv, "Bae"sv, "UU");
+        person2->print_info();
     }
 }
