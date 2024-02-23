@@ -258,7 +258,8 @@ namespace person01
         compare_result(result2);
         auto result3 = *phoneBook[3] <=> *phoneBook[4];
         compare_result(result3);*/        
-        if (*person4 < *phoneBook[3]) {
+        if (*person4 < *phoneBook[3]) { // format을 쓰면 여기 VS에서는 인텔리센스가 먹통이 되버린다..
+            // VS에서는 그냥 cout을 쓰는게 속 편하다. 
             cout << person4->get_first_name() << " " << person4->get_last_name()
                 << " is less than "
                 << phoneBook[3]->get_first_name() << " " << phoneBook[3]->get_last_name() << endl;
