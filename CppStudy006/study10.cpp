@@ -138,6 +138,87 @@ namespace study10::study05
                 "오버라이드 되지 않은 Base 클래스의 go()가 호출된다." << endl;
             ref.go(); cout << endl;
         }
-	}	
-	
+	}
+
+	namespace case02
+	{
+		class Base
+		{
+		public:
+            // 5의 법칙
+            Base() = default;
+			virtual ~Base() = default;
+            Base(const Base& src) = default;
+            Base& operator=(const Base& rhs) = default;
+            Base(Base&& src) noexcept = default;
+            Base& operator=(Base&& rhs) noexcept = default;
+			virtual void func1();
+            virtual void func2();
+            void nonVirtualFunc();
+		};
+
+        class Derived final : public Base
+        {
+        public:
+            void func2() override;
+            void nonVirtualFunc();
+        };
+	}
+    namespace case03
+    {
+        class Base
+        {
+            char* base_string_;
+        public:
+            Base()
+            {
+                base_string_ = new char[30];
+                cout << "base_string_ allocated." << endl;
+            	cout << "Base class constructor called" << endl;
+            }
+            virtual ~Base()
+            {
+                delete[] base_string_;
+				cout << "base_string_ deallocated." << endl;
+	            cout << "Base class destructor called" << endl;
+            }
+            virtual void someMethod();
+            Base(const Base& src) = default;
+            Base& operator=(const Base& rhs) = default;
+            Base(Base&& src) noexcept = default;
+            Base& operator=(Base&& rhs) noexcept = default;
+        };
+
+        class Derived : public Base
+        {
+            char* string_;
+        public:
+            Derived()
+            {
+	            string_ = new char[30];
+                cout << "string_ allocated." << endl;
+            }
+            ~Derived() override
+            {
+	            delete[] string_;
+				cout << "string_ deallocated." << endl;
+            }
+            void someMethod() override final;
+            Derived(const Derived& src) = default;
+            Derived& operator=(const Derived& rhs) = default;
+            Derived(Derived&& src) noexcept = default;
+            Derived& operator=(Derived&& rhs) noexcept = default;
+        };
+        /*class DerivedDerived : public Derived
+        {
+        public:
+            void someMethod() override; // 컴파일 에러
+        };*/
+        void study005()
+        {
+            const Base* ptr{ new Derived() };
+            delete ptr;
+            ptr = nullptr;
+        }
+    }
 }
