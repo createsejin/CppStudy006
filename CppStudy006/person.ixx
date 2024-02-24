@@ -3,8 +3,6 @@ import std;
 
 namespace person01
 {
-    inline unsigned call_counter{ 0 };
-
     export class Person
     {
         std::string first_name_;

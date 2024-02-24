@@ -2,11 +2,11 @@
 //
 
 import std;
-import person;
+import study10;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    person01::study001();
+    study10::study01::study002();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

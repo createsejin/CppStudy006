@@ -5,9 +5,9 @@ namespace person01
     unsigned call_counter {0};
     //------------------------------------Person::Impl--------------------------------------//
     class Person::Impl {
-        std::string first_name;
-        std::string last_name;
-        std::string initial;
+        std::string first_name_;
+        std::string last_name_;
+        std::string initial_;
     public:
         [[nodiscard]] static auto make_initial(std::string_view first_name,
             std::string_view last_name) -> std::string;
@@ -59,37 +59,37 @@ namespace person01
     }
     Person::Impl::Impl(const std::string_view first_name, const std::string_view last_name,
         const std::string_view initial)
-        : first_name{ first_name }, last_name{ last_name }, initial{ initial }
+        : first_name_{ first_name }, last_name_{ last_name }, initial_{ initial }
     {
         cout << "Calling Impl parameters 3 Constructor: " << call_counter++ << " ";
         print_info();
     }
-    auto Person::Impl::get_first_name() -> std::string& { return first_name; }
+    auto Person::Impl::get_first_name() -> std::string& { return first_name_; }
 
     void Person::Impl::set_first_name(const std::string_view first_name) {
-        this->first_name = first_name;
+        this->first_name_ = first_name;
     }
-    auto Person::Impl::get_last_name() -> std::string& { return last_name; }
+    auto Person::Impl::get_last_name() -> std::string& { return last_name_; }
     void Person::Impl::set_last_name(const std::string_view last_name) {
-        this->last_name = last_name;
+        this->last_name_ = last_name;
     }
-    auto Person::Impl::get_initial() -> std::string& { return initial; }
-    void Person::Impl::set_initial(const std::string_view initial) { this->initial = initial; }
+    auto Person::Impl::get_initial() -> std::string& { return initial_; }
+    void Person::Impl::set_initial(const std::string_view initial) { this->initial_ = initial; }
 
     void Person::Impl::print_info() const {
-        cout << initial << ": " << first_name << " " << last_name << endl;
+        cout << initial_ << ": " << first_name_ << " " << last_name_ << endl;
     }
 
     void Person::Impl::swap(Impl& other) noexcept {
-        std::swap(this->first_name, other.first_name);
-        std::swap(this->last_name, other.last_name);
-        std::swap(this->initial, other.initial);
+        std::swap(this->first_name_, other.first_name_);
+        std::swap(this->last_name_, other.last_name_);
+        std::swap(this->initial_, other.initial_);
     }
 
     bool Person::Impl::operator==(const Impl& rhs) const {
-        return this->first_name == rhs.first_name &&
-            this->last_name == rhs.last_name &&
-            this->initial == rhs.initial;
+        return this->first_name_ == rhs.first_name_ &&
+            this->last_name_ == rhs.last_name_ &&
+            this->initial_ == rhs.initial_;
     }
 
     bool Person::Impl::operator!=(const Impl& rhs) const
@@ -99,9 +99,9 @@ namespace person01
 
     bool Person::Impl::operator<(const Impl& rhs) const
     {
-        if (this->first_name != rhs.first_name) return this->first_name < rhs.first_name;
-        if (this->last_name != rhs.last_name) return this->last_name < rhs.last_name;
-        return this->initial < rhs.initial;
+        if (this->first_name_ != rhs.first_name_) return this->first_name_ < rhs.first_name_;
+        if (this->last_name_ != rhs.last_name_) return this->last_name_ < rhs.last_name_;
+        return this->initial_ < rhs.initial_;
     }
 
     bool Person::Impl::operator>=(const Impl& rhs) const
@@ -110,9 +110,9 @@ namespace person01
     }
 
     bool Person::Impl::operator>(const Impl& rhs) const {
-        if (this->first_name != rhs.first_name) return this->first_name > rhs.first_name;
-        if (this->last_name != rhs.last_name) return this->last_name > rhs.last_name;
-        return this->initial > rhs.initial;
+        if (this->first_name_ != rhs.first_name_) return this->first_name_ > rhs.first_name_;
+        if (this->last_name_ != rhs.last_name_) return this->last_name_ > rhs.last_name_;
+        return this->initial_ > rhs.initial_;
     }
 
     bool Person::Impl::operator<=(const Impl& rhs) const {
