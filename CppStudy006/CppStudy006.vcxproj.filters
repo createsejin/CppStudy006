@@ -55,4 +55,9 @@
       <Filter>Source Files\study10</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="weather_prediction.h">
+      <Filter>Source Files\study10</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

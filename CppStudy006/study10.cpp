@@ -182,7 +182,7 @@ namespace study10::study05
 				cout << "base_string_ deallocated." << endl;
 	            cout << "Base class destructor called" << endl;
             }
-            virtual void someMethod();
+            virtual void someMethod() const { cout << "Base someMethod" << endl; }
             Base(const Base& src) = default;
             Base& operator=(const Base& rhs) = default;
             Base(Base&& src) noexcept = default;
@@ -203,7 +203,8 @@ namespace study10::study05
 	            delete[] string_;
 				cout << "string_ deallocated." << endl;
             }
-            void someMethod() override final;
+            //void someMethod() override final;
+            void someMethod() const final { cout << "Derived someMethod" << endl; }
             Derived(const Derived& src) = default;
             Derived& operator=(const Derived& rhs) = default;
             Derived(Derived&& src) noexcept = default;
@@ -217,6 +218,7 @@ namespace study10::study05
         void study005()
         {
             const Base* ptr{ new Derived() };
+            ptr->someMethod();
             delete ptr;
             ptr = nullptr;
         }

@@ -19,7 +19,6 @@ namespace study10
 		}
 		namespace case02
 		{
-
 		}
 		namespace case03
 		{
