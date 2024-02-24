@@ -12,15 +12,16 @@ namespace weather_prediction01
 	public:
 		virtual void set_current_temp_celsius(double temp);
 		[[nodiscard]] virtual auto get_tomorrow_temp_celsius() const -> double;
+		void show_result() const override;
 	};
 
 	auto MyWeatherPrediction::convert_celsius_to_fahrenheit(const double celsius) -> double
 	{
-		return celsius * (9.0 / 5.0) + 32;
+		return celsius * (9.0 / 5.0) + 32.0;
 	}
 	auto MyWeatherPrediction::convert_fahrenheit_to_celsius(const double fahrenheit) -> double
 	{
-		return (5 / 9) * (fahrenheit - 32);
+		return (5.0 / 9.0) * (fahrenheit - 32.0);
 	}
 
 	void MyWeatherPrediction::set_current_temp_celsius(const double temp)
@@ -33,6 +34,13 @@ namespace weather_prediction01
 	{
 		const auto fahrenheit_temp{ get_tomorrow_temp_fahrenheit() };
 		return convert_fahrenheit_to_celsius(fahrenheit_temp);
+	}
+
+	void MyWeatherPrediction::show_result() const
+	{
+		cout << format("Tomorrow will be {} degree Celsius ({} degree Fahrenheit)",
+			get_tomorrow_temp_celsius(), get_tomorrow_temp_fahrenheit()) << endl;
+		if (get_chance_of_rain() > 0.5) { cout << "Bring an umbrella!" << endl; }
 	}
 
 }
