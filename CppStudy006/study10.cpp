@@ -90,15 +90,54 @@ namespace study10::study02
     class Derived final : public Base
     { // 여기서 final 키워드는 이 클래스는 더이상 하위클래스로 상속할 수 없다는걸 명시한다.
     public:
-        void someMethod(double d);
+        void someMethod(double d) override;
         void someOtherMethod() const {
             cout << "the base class's protectedInt = " << protected_int_ << endl;
             //cout << "the base class's privateInt = " << privateInt << endl; // compile error!
         }
     };
+    void Base::someMethod(double d) {
+        cout << "This is Base's version of someMethod()." << endl;
+    }
+    void Derived::someMethod(double d) {
+        // ReSharper disable once StringLiteralTypo
+        cout << "This is Derived's version of someMethod()." << endl;
+    }
 
     void study003()
     {
-	    
+        Derived myDerived;
+        Base& ref{ myDerived };
+        ref.someMethod(1.1); // Base 버전의 someMethod가 호출된다. p.517
+        // override 키워드를 붙이면 이런일을 사전에 알려서 방지해준다.
+        // 이제 다시 Derived 버전의 someMethod가 호출된다.
     }
+}
+
+namespace study10::study05
+{
+	namespace case01
+	{
+        class Base
+        {
+        public:
+            void go() { cout << "go() called on Base" << endl; }
+        };
+        class Derived : public Base
+        {
+        public:
+            void go() { cout << "go() called on Derived" << endl; }
+        };
+        void study004()
+        {
+            Derived my_derived;
+            cout << "단순히 Derived class에 go()가 생성된 것." << endl;
+            my_derived.go(); cout << endl;
+            Base& ref{ my_derived };
+            cout << "Base 타입 레퍼런스로 호출하면 실제로 Derived에서\n"
+                "오버라이드 되지 않은 Base 클래스의 go()가 호출된다." << endl;
+            ref.go(); cout << endl;
+        }
+	}	
+	
 }
