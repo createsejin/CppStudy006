@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="my_weather_prediction.ixx" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="person.ixx" />
     <ClCompile Include="spreadsheet.cpp" />
