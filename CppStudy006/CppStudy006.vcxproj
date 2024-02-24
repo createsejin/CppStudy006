@@ -143,6 +143,8 @@
     <ClCompile Include="spreadsheet_cell.ixx" />
     <ClCompile Include="study09.cpp" />
     <ClCompile Include="study09.ixx" />
+    <ClCompile Include="study10.cpp" />
+    <ClCompile Include="study10.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

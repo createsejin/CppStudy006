@@ -2,6 +2,7 @@ module person;
 using namespace std;
 namespace person01
 {
+    unsigned call_counter {0};
     //------------------------------------Person::Impl--------------------------------------//
     class Person::Impl {
         std::string first_name;
@@ -134,10 +135,10 @@ namespace person01
     //------------------------------------Person-------------------------------------------//
     auto Person::make_initial(const std::string_view first_name,
         const std::string_view last_name) const -> std::string {
-        return impl->make_initial(first_name, last_name);
+        return impl_->make_initial(first_name, last_name);
     }
     Person::Person() {
-        impl = std::make_unique<Impl>();
+        impl_ = std::make_unique<Impl>();
         cout << "Calling Person Default Constructor: " << call_counter++ << " ";
         print_info();
     }
@@ -146,11 +147,11 @@ namespace person01
         print_info();
     }
     Person::Person(const Person& src) { // 복제 생성자
-        *impl = *src.impl;
+        *impl_ = *src.impl_;
     }
 
     Person& Person::operator=(const Person& rhs) { // 복제 대입 연산자
-        *impl = *rhs.impl;
+        *impl_ = *rhs.impl_;
         return *this;
     }
 
@@ -162,52 +163,52 @@ namespace person01
     }
     Person::Person(std::string_view first_name, std::string_view last_name, std::string_view initial)
     {
-        impl = std::make_unique<Impl>(first_name, last_name, initial);
+        impl_ = std::make_unique<Impl>(first_name, last_name, initial);
         cout << "Calling Person parameters 3 Constructor: " << call_counter++ << " ";
         print_info();
     }
-    auto Person::get_first_name() const -> std::string& { return impl->get_first_name(); }
+    auto Person::get_first_name() const -> std::string& { return impl_->get_first_name(); }
 
     void Person::set_first_name(const std::string_view first_name) const {
-        impl->set_first_name(first_name);
+        impl_->set_first_name(first_name);
     }
-    auto Person::get_last_name() const -> std::string& { return impl->get_last_name(); }
+    auto Person::get_last_name() const -> std::string& { return impl_->get_last_name(); }
     void Person::set_last_name(const std::string_view last_name) const {
-        impl->set_last_name(last_name);
+        impl_->set_last_name(last_name);
     }
-    auto Person::get_initial() const -> std::string& { return impl->get_initial(); }
-    auto Person::set_initial(const std::string_view initial) const -> void { impl->set_initial(initial); }
+    auto Person::get_initial() const -> std::string& { return impl_->get_initial(); }
+    auto Person::set_initial(const std::string_view initial) const -> void { impl_->set_initial(initial); }
 
     void Person::print_info() const {
-        impl->print_info();
+        impl_->print_info();
     }
 
     void Person::swap(const Person& other) const noexcept {        
-        impl->swap(*other.impl);
+        impl_->swap(*other.impl_);
     }
 
     bool Person::operator==(const Person& rhs) const {
-        return *impl == *rhs.impl;
+        return *impl_ == *rhs.impl_;
     }
 
     bool Person::operator!=(const Person& rhs) const {
-        return *impl != *rhs.impl;
+        return *impl_ != *rhs.impl_;
     }
 
     bool Person::operator<(const Person& rhs) const {
-        return *impl < *rhs.impl;
+        return *impl_ < *rhs.impl_;
     }
 
     bool Person::operator>=(const Person& rhs) const {
-        return *impl >= *rhs.impl;
+        return *impl_ >= *rhs.impl_;
     }
 
     bool Person::operator>(const Person& rhs) const {
-        return *impl > *rhs.impl;
+        return *impl_ > *rhs.impl_;
     }
 
     bool Person::operator<=(const Person& rhs) const {
-        return *impl <= *rhs.impl;
+        return *impl_ <= *rhs.impl_;
     }
 
     // 이걸 어떻게 할까..
@@ -217,19 +218,20 @@ namespace person01
 
     Person& Person::operator=(Person&& rhs) noexcept
     {
-        *this->impl = std::move(*rhs.impl);
+        *this->impl_ = std::move(*rhs.impl_);
         return *this;
     }
 
     Person::Person(Person&& rhs) noexcept {
-        *this->impl = std::move(*rhs.impl);
+        *this->impl_ = std::move(*rhs.impl_);
     }
 
     [[maybe_unused]]
-    static void compare_result(const std::weak_ordering result) {
-        if (is_lt(result)) cout << "less" << endl;
-        if (is_gt(result)) cout << "great" << endl;
-        if (is_eq(result)) cout << "equal" << endl;
+    void compare_result(const std::weak_ordering result)
+    {
+	    if (is_lt(result)) cout << "less" << endl;
+	    if (is_gt(result)) cout << "great" << endl;
+	    if (is_eq(result)) cout << "equal" << endl;
     }
 
     void study001() { // p.503
@@ -247,8 +249,8 @@ namespace person01
         phoneBook[4] = person4;
         // ReSharper disable once CppDFAMemoryLeak
         phoneBook[5] = new Person("SeJin"sv, "Bae"sv, "SV");
-        constexpr int dinamic_array_index[]{ 0, 3, 5 };
-        constexpr size_t dinamic_array_size{ 3 };
+        constexpr int dynamic_array_index[]{ 0, 3, 5 };
+        constexpr size_t dynamic_array_size{ 3 };
         for (size_t i{ 0 }; i < book_size; ++i) {
             phoneBook[i]->print_info();
         }
@@ -260,9 +262,12 @@ namespace person01
         compare_result(result3);*/        
         if (*person4 < *phoneBook[3]) { // format을 쓰면 여기 VS에서는 인텔리센스가 먹통이 되버린다..
             // VS에서는 그냥 cout을 쓰는게 속 편하다. 
-            cout << person4->get_first_name() << " " << person4->get_last_name()
-                << " is less than "
-                << phoneBook[3]->get_first_name() << " " << phoneBook[3]->get_last_name() << endl;
+            //cout << person4->get_first_name() << " " << person4->get_last_name()
+            //    << " is less than "
+            //    << phoneBook[3]->get_first_name() << " " << phoneBook[3]->get_last_name() << endl;
+            cout << std::format("{0} {1} is less than {2} {3}",
+                person4->get_first_name(), person4->get_last_name(),
+                phoneBook[3]->get_first_name(), phoneBook[3]->get_last_name()) << endl;
         }
         if (*person1 > *person4) {
             cout << person1->get_first_name() << " " << person1->get_last_name()
@@ -275,8 +280,8 @@ namespace person01
                 << phoneBook[5]->get_first_name() << " " << phoneBook[5]->get_last_name() << endl;
         }
 
-        for (size_t i{ 0 }; i < dinamic_array_size; ++i) {
-            delete phoneBook[dinamic_array_index[i]];
+        for (size_t i{ 0 }; i < dynamic_array_size; ++i) {
+            delete phoneBook[dynamic_array_index[i]];
         }
 
         delete person1;

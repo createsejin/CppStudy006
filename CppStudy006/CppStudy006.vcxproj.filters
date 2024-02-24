@@ -16,6 +16,9 @@
     <Filter Include="Source Files\study09">
       <UniqueIdentifier>{cfeb5ad8-cc13-4fda-ba6b-a24f1d8c47ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\study10">
+      <UniqueIdentifier>{67d05a5f-889a-46af-88da-2a90661c7301}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,11 +48,11 @@
     <ClCompile Include="spreadsheet.cpp">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="person_impl.ixx">
-      <Filter>Source Files\study09</Filter>
+    <ClCompile Include="study10.ixx">
+      <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="person_impl.cpp">
-      <Filter>Source Files\study09</Filter>
+    <ClCompile Include="study10.cpp">
+      <Filter>Source Files\study10</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
