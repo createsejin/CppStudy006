@@ -26,7 +26,7 @@ namespace study10
 	{
 		namespace case01
 		{
-			
+			export void study006();
 		}
 	}
 }

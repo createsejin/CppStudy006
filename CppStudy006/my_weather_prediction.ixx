@@ -38,9 +38,9 @@ namespace weather_prediction01
 
 	void MyWeatherPrediction::show_result() const
 	{
-		cout << format("Tomorrow will be {} degree Celsius ({} degree Fahrenheit)",
+		cout << std::format("Tomorrow will be {} degree Celsius ({} degree Fahrenheit)",
 			get_tomorrow_temp_celsius(), get_tomorrow_temp_fahrenheit()) << endl;
 		if (get_chance_of_rain() > 0.5) { cout << "Bring an umbrella!" << endl; }
 	}
-
+	
 }

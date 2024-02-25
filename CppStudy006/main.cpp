@@ -6,7 +6,7 @@ import study10;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    study10::study02::case03::study005();
+    study10::study03::case01::study006();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

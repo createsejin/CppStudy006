@@ -237,8 +237,12 @@ namespace study10::study03
         };
         class Derived : public Base
         {
+            Something data_member_;
         public:
             Derived() { cout << "3"; }
         };
+        void study006() {
+            Derived my_derived;
+        }
 	}
 }
