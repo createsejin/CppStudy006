@@ -1,9 +1,9 @@
-#pragma once
+export module weather_prediction;
 import std;
 
 namespace weather_prediction01
 {
-	class WeatherPrediction
+	export class WeatherPrediction
 	{
 		double current_temp_fahrenheit_{ 0 };
 		double distance_from_mars_{ 0 };
@@ -26,6 +26,6 @@ namespace weather_prediction01
 		// 결과 출력
 		virtual void show_result() const;
 		// 현재 온도를 스트링값으로 리턴한다.
-		[[nodiscard]] virtual auto get_temperature() const -> std::string;
+		[[nodiscard]] virtual auto get_temperature() const->std::string;
 	};
 }

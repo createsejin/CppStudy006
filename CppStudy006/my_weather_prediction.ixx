@@ -1,11 +1,11 @@
-module;
-#include "weather_prediction.h"
 export module my_weather_prediction;
+import weather_prediction;
+import std;
 
 using namespace std;
 namespace weather_prediction01
 {
-	export class MyWeatherPrediction : public WeatherPrediction
+	export class MyWeatherPrediction final : public WeatherPrediction
 	{
 		static auto convert_celsius_to_fahrenheit(double celsius) -> double;
 		static auto convert_fahrenheit_to_celsius(double fahrenheit) -> double;

@@ -112,10 +112,6 @@ namespace study10::study02
         // override 키워드를 붙이면 이런일을 사전에 알려서 방지해준다.
         // 이제 다시 Derived 버전의 someMethod가 호출된다.
     }
-}
-
-namespace study10::study05
-{
 	namespace case01
 	{
         class Base
@@ -223,4 +219,26 @@ namespace study10::study05
             ptr = nullptr;
         }
     }
+}
+
+namespace study10::study03
+{
+	namespace case01
+	{
+		class Something
+		{
+        public:
+            Something() { cout << "2"; }
+		};
+        class Base
+        {
+        public:
+            Base() { cout << "1"; }
+        };
+        class Derived : public Base
+        {
+        public:
+            Derived() { cout << "3"; }
+        };
+	}
 }

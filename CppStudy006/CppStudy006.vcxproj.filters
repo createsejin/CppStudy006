@@ -57,10 +57,8 @@
     <ClCompile Include="my_weather_prediction.ixx">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="weather_prediction.h">
+    <ClCompile Include="weather_prediction.ixx">
       <Filter>Source Files\study10</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -146,9 +146,7 @@
     <ClCompile Include="study09.ixx" />
     <ClCompile Include="study10.cpp" />
     <ClCompile Include="study10.ixx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="weather_prediction.h" />
+    <ClCompile Include="weather_prediction.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

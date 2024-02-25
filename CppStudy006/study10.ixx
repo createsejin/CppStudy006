@@ -10,9 +10,6 @@ namespace study10
 	namespace study02
 	{
 		export void study003();
-	}
-	namespace study05
-	{
 		namespace case01
 		{
 			export void study004();
@@ -23,6 +20,13 @@ namespace study10
 		namespace case03
 		{
 			export void study005();
+		}
+	}
+	namespace study03
+	{
+		namespace case01
+		{
+			
 		}
 	}
 }
