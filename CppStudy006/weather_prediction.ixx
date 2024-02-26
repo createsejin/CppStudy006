@@ -1,5 +1,6 @@
+module;
+#include <string>
 export module weather_prediction;
-import std;
 
 namespace weather_prediction01
 {

@@ -1,5 +1,7 @@
+module;
+#include <compare>
+#include <string>
 export module spreadsheet_cell;
-import std;
 
 export namespace spreadsheet01
 {

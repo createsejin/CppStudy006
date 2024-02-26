@@ -1,5 +1,7 @@
+module;
+#include <string>
+#include <memory>
 export module person;
-import std;
 
 namespace person01
 {

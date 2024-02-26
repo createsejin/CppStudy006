@@ -1,5 +1,6 @@
+module;
+#include <string>
 export module study09;
-import std;
 
 export namespace study09::study01 {
     class SpreadsheetCell {

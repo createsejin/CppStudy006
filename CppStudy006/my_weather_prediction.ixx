@@ -1,7 +1,8 @@
+module;
+#include <fmt/format.h>
+#include <iostream>
 export module my_weather_prediction;
 import weather_prediction;
-import std;
-import fmt;
 
 using namespace std;
 namespace weather_prediction01

@@ -1,3 +1,7 @@
+module;
+#include <iostream>
+#include <string>
+#include <vector>
 module study09;
 
 using namespace std;

@@ -1,3 +1,6 @@
+module;
+#include <iostream>
+#include <string>
 module spreadsheet_cell;
 
 using namespace std;

@@ -1,7 +1,9 @@
+module;
+#include <memory>
 export module spreadsheet;
 
 export import spreadsheet_cell;
-import std;
+
 
 namespace spreadsheet01
 {

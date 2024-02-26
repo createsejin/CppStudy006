@@ -1,5 +1,6 @@
+module;
+#include <iostream>
 module study10;
-import std;
 
 using namespace std;
 namespace study10::study01

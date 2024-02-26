@@ -1,7 +1,6 @@
 // CppStudy006.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
-import std;
+#include <iostream>
 import study10;
 
 int main() {
