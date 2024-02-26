@@ -1,11 +1,15 @@
 // CppStudy006.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+//#define _CRTDBG_MAP_ALLOC
+//#include <stdlib.h>
+//#include <crtdbg.h>
 #include <iostream>
 import study10;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    study10::study03::case03::study007();
+    study10::study03::case04::study008();
+    //_CrtDumpMemoryLeaks();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -291,4 +291,83 @@ namespace study10::study03
             Derived my_derived;
         }
     }
+    namespace case04
+    {
+        class Book
+        {
+        public:
+            virtual ~Book() = default;
+            virtual auto getDescription() const -> std::string { return "Book"; }
+            virtual auto getHeight() const -> int { return 120; }
+        };
+
+        class Paperback : public Book
+        {
+        public:
+            auto getDescription() const -> std::string override {
+                return "Paperback " + Book::getDescription();
+            }
+        };
+
+        class Romance final : public Paperback
+        {
+        public:
+            auto getDescription() const -> std::string override {
+                return "Romance " + Book::getDescription();
+            }
+            auto getHeight() const -> int override { return Paperback::getHeight() / 2; }
+        };
+
+        class Technical final : public Book
+        {
+        public:
+            auto getDescription() const -> std::string override {
+                return "Technical " + Book::getDescription();
+            }
+        };
+
+        void study008() {
+            auto novel{ std::make_unique<Romance>() };
+            auto* book{ new Book() };
+            cout << novel->getDescription() << endl; // "Romance Paperback Book"
+            cout << book->getDescription() << endl; // "Book"
+            cout << novel->getHeight() << endl; // "60"
+            cout << book->getHeight() << endl; // "120"
+            delete book; book = nullptr;
+        }
+    }
+    namespace case05
+    {
+        class Something
+        {
+        public:
+            Something() { cout << "+2"; }
+            virtual ~Something() { cout << "-2"; }
+        };
+
+        class Base
+        {
+        public:
+            Base() { cout << "+1"; }
+            virtual ~Base() { cout << "-1"; }
+        };
+
+        class Derived final : public Base
+        {
+            Something data_member_;
+        public:
+            Derived() { cout << "+3"; }
+            virtual ~Derived() { cout << "-3"; }
+        };
+        static void presumptuous(Base* base) { // p.536
+            // base가 Derived* 타입이라고 보장할 수 없다.
+            Derived* myDerived{ static_cast<Derived*>(base) };
+        }
+        static void lessPresumptuous(Base* base) {
+            Derived* myDerived{ dynamic_cast<Derived*>(base) };
+            if (myDerived != nullptr) {
+                // doing something
+            }
+        }
+    }
 }
