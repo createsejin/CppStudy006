@@ -27,7 +27,7 @@ namespace weather_prediction01
 		// 결과 출력
 		virtual void show_result() const {}
 		// 현재 온도를 스트링값으로 리턴한다.
-		[[nodiscard]] virtual auto get_temperature() const->std::string {
+		[[nodiscard]] virtual auto get_temperature() const -> std::string {
 			std::string std;
 			return std;
 		}

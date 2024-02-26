@@ -15,6 +15,7 @@ namespace weather_prediction01
 		virtual void set_current_temp_celsius(double temp);
 		[[nodiscard]] virtual auto get_tomorrow_temp_celsius() const -> double;
 		void show_result() const override;
+		[[nodiscard]] auto get_temperature() const -> std::string override;
 	};
 
 	auto MyWeatherPrediction::convert_celsius_to_fahrenheit(const double celsius) -> double
@@ -44,5 +45,9 @@ namespace weather_prediction01
 			get_tomorrow_temp_celsius(), get_tomorrow_temp_fahrenheit()) << endl;
 		if (get_chance_of_rain() > 0.5) { cout << "Bring an umbrella!" << endl; }
 	}
-	
+
+	auto MyWeatherPrediction::get_temperature() const -> std::string 
+	{
+		return WeatherPrediction::get_temperature() + "\u00B0F";
+	}	
 }

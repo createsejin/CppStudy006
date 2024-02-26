@@ -231,11 +231,13 @@ namespace study10::study03
         public:
             Something() { cout << "2"; }
 		};
+
         class Base
         {
         public:
             Base() { cout << "1"; }
         };
+
         class Derived : public Base
         {
             Something data_member_;
@@ -246,4 +248,47 @@ namespace study10::study03
             Derived my_derived;
         }
 	}
+    namespace case02
+    {
+        class Base
+        {
+        public:
+            Base(int i) {};
+        };
+
+        class Derived final : public Base
+        {
+        public:
+            Derived() : Base{7} {}
+            Derived(const int i) : Base{i} {}
+        };
+    }
+    namespace case03
+    {
+        class Something
+        {
+        public:
+            Something() { cout << "+2"; }
+            virtual ~Something() { cout << "-2"; }
+        };
+
+        class Base
+        {
+        public:
+            Base() { cout << "+1"; }
+            virtual ~Base() { cout << "-1"; }
+        };
+
+        class Derived final : public Base
+        {
+            Something data_member_;
+        public:
+            Derived() { cout << "+3"; }
+            virtual ~Derived() { cout << "-3"; }
+        };
+
+        void study007() {
+            Derived my_derived;
+        }
+    }
 }

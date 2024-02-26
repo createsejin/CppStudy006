@@ -28,6 +28,13 @@ namespace study10
 		{
 			export void study006();
 		}
+		namespace case02
+		{			
+		}
+		namespace case03
+		{
+			export void study007();
+		}
 	}
 }
 
