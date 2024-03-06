@@ -75,5 +75,17 @@
     <ClCompile Include="person03.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
+    <ClCompile Include="datamodel.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="datamodel.person.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="datamodel.address.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="datamodel.address.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

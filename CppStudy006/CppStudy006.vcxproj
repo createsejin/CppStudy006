@@ -136,6 +136,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="datamodel.address.cpp" />
+    <ClCompile Include="datamodel.address.ixx" />
+    <ClCompile Include="datamodel.ixx" />
+    <ClCompile Include="datamodel.person.ixx" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="my_weather_prediction.ixx" />
     <ClCompile Include="person.cpp" />
