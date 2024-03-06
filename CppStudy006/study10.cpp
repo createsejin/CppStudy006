@@ -603,4 +603,11 @@ namespace study10::study04
             cout << person->to_string() << endl;
         }
     }
+    void study031() {
+        const Employee employee{ "SeHee"sv, "Bae"sv, 21 };
+        cout << employee.to_string() << endl;
+
+        const Manager manager{ employee };
+        cout << manager.to_string() << endl;
+    }
 }

@@ -66,6 +66,7 @@ namespace study10
 			export void study029();
 		}
 		export void study030(); // p.587 연습문제
+		export void study031();
 	}
 }
 

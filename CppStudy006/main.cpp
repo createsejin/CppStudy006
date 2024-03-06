@@ -8,7 +8,7 @@ import study10;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    study10::study04::study030();
+    study10::study04::study031();
     //_CrtDumpMemoryLeaks();
 }
 

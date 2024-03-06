@@ -39,12 +39,19 @@ export namespace hr
         bool operator<=(const Person& rhs) const;
     };
 
+    class Manager;
+    class Director;
+
     class Employee : public Person
     {
         unsigned int employee_id_{ 0 };
     public:
         Employee() = default;
         ~Employee() override = default;
+        Employee(const Employee& src);
+        Employee& operator=(const Employee& rhs) = default;
+        Employee(Employee&& src) noexcept = default;
+        Employee& operator=(Employee&& rhs) noexcept = default;
         Employee(std::string_view first_name, std::string_view last_name, unsigned int id);
         Employee(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
 
@@ -59,6 +66,8 @@ export namespace hr
     {
     public:
         using Employee::Employee;
+        explicit Manager(const Employee& employee);
+        explicit Manager(Employee&& employee);
         auto to_string() const->std::string override;
         
     };

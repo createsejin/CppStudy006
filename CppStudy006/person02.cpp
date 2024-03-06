@@ -247,6 +247,10 @@ namespace hr
         if (is_gt(result)) cout << "great" << endl;
         if (is_eq(result)) cout << "equal" << endl;
     }
+    Employee::Employee(const Employee& src)
+	    : Person(src.get_first_name(), src.get_last_name(), src.get_initial()), employee_id_(src.get_id())
+    {
+    }
     //---------------------------Employee-----------------------------------------------------//
     Employee::Employee(const std::string_view first_name, const std::string_view last_name, const unsigned int id)
 	    : Person(first_name, last_name), employee_id_(id)
@@ -269,6 +273,14 @@ namespace hr
         return str;
     }
     //----------------------------------Manager---------------------------------------------//
+    Manager::Manager(const Employee& employee)
+	    : Employee(employee)
+	{        
+    }
+    Manager::Manager(Employee&& employee)
+	    : Employee(std::move(employee))
+    {
+    }
     auto Manager::to_string() const -> std::string {
         string str{ Employee::to_string() };
         str = "Manager: " + str;
