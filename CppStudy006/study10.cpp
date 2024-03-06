@@ -448,4 +448,45 @@ namespace study10::study04
             logObject(foo);
         }
     }
+    // p.578 비 public 클래스 상속
+    
+    // p.579 가상 베이스 클래스
+    namespace case018
+    {
+        class Animal
+        {
+        public:
+            virtual void eat() = 0;
+            virtual void sleep() { cout << "zzzzzz..." << endl; }
+        };
+        class Dog : public virtual Animal
+        {
+        public:
+            virtual void bark() { cout << "Woof!" << endl; }
+            void eat() override { cout << "The dog ate." << endl; }
+        };
+        class Bird : public virtual Animal
+        {
+        public:
+            virtual void chirp() { cout << "Chirp!" << endl; }
+            void eat() override { cout << "The bird ate." << endl; }
+        };
+        class DogBird final : public Dog, public Bird
+        {
+        public:
+            virtual void eat() override { Dog::eat(); }
+        };
+        void study024() {
+            DogBird myConfusedAnimal;
+            myConfusedAnimal.sleep();
+            cout << std::format("dddddd foramt test") << endl; // 웬일? 패치했나??
+        }
+    }
+    // p.581 캐스트
+    namespace case019
+    {
+        void study025() {
+
+        }
+    }
 }
