@@ -1,5 +1,4 @@
 module math;
-import :details;
 
 double math01::super_log(double z, double b)
 {
