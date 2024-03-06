@@ -99,5 +99,13 @@
     <ClCompile Include="math01_helpers.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
+    <ClCompile Include="study11.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="study11.h">
+      <Filter>Source Files\study11</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

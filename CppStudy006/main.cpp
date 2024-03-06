@@ -4,12 +4,12 @@
 //#include <stdlib.h>
 //#include <crtdbg.h>
 import std;
-import math;
+#include "study11.h"
 
 using namespace std;
 int main() {
     std::cout << "Program start" << std::endl;
-    cout << math01::super_log(0.0, 0.0) << endl;
+    study11_001::study000();
     //_CrtDumpMemoryLeaks();
 }
 

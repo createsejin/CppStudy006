@@ -160,7 +160,11 @@
     <ClCompile Include="study09.ixx" />
     <ClCompile Include="study10.cpp" />
     <ClCompile Include="study10.ixx" />
+    <ClCompile Include="study11.cpp" />
     <ClCompile Include="weather_prediction.ixx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="study11.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
