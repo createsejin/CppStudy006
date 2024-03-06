@@ -75,6 +75,7 @@ export namespace hr
     {
     public:
         using Employee::Employee;
+        explicit Director(const Employee& employee);
         auto to_string() const -> std::string override;
     };
 

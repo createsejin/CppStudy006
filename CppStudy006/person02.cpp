@@ -286,7 +286,11 @@ namespace hr
         str = "Manager: " + str;
         return str;
     }
-    //----------------------------------Director--------------------------------------------//    
+    //----------------------------------Director--------------------------------------------//   
+    Director::Director(const Employee& employee)
+        : Employee(employee)
+    {
+    }
     auto Director::to_string() const -> std::string {
         string str{ Employee::to_string() };
         str = "Director: " + str;

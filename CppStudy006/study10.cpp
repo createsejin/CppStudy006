@@ -606,8 +606,12 @@ namespace study10::study04
     void study031() {
         const Employee employee{ "SeHee"sv, "Bae"sv, 21 };
         cout << employee.to_string() << endl;
-
-        const Manager manager{ employee };
+        const Manager manager{ employee }; // promote
         cout << manager.to_string() << endl;
+
+        const auto employee2{ make_unique<Employee>("DeWoo"sv, "Lee"sv, 67) };
+        cout << employee2->to_string() << endl;
+        const auto director{ make_unique<Director>(*employee2) }; // promote
+        cout << director->to_string() << endl;
     }
 }
