@@ -19,6 +19,9 @@
     <Filter Include="Source Files\study10">
       <UniqueIdentifier>{67d05a5f-889a-46af-88da-2a90661c7301}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\study11">
+      <UniqueIdentifier>{3899db47-8e2f-472e-a0bc-7890869b3357}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +68,12 @@
     </ClCompile>
     <ClCompile Include="person02.cpp">
       <Filter>Source Files\study10</Filter>
+    </ClCompile>
+    <ClCompile Include="person03.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="person03.cpp">
+      <Filter>Source Files\study11</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -142,6 +142,8 @@
     <ClCompile Include="person.ixx" />
     <ClCompile Include="person02.cpp" />
     <ClCompile Include="person02.ixx" />
+    <ClCompile Include="person03.cpp" />
+    <ClCompile Include="person03.ixx" />
     <ClCompile Include="spreadsheet.cpp" />
     <ClCompile Include="spreadsheet.ixx" />
     <ClCompile Include="spreadsheet_cell.cpp" />
