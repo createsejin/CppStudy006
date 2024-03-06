@@ -140,6 +140,8 @@
     <ClCompile Include="my_weather_prediction.ixx" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="person.ixx" />
+    <ClCompile Include="person02.cpp" />
+    <ClCompile Include="person02.ixx" />
     <ClCompile Include="spreadsheet.cpp" />
     <ClCompile Include="spreadsheet.ixx" />
     <ClCompile Include="spreadsheet_cell.cpp" />

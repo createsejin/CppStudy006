@@ -536,6 +536,53 @@ namespace study10::study04
     }
     namespace case020
     {
-
+        class Base
+        {
+        public:
+            Base() = default;
+            virtual ~Base() = default;
+            Base(const Base& src) = default;
+            Base& operator=(const Base& rhs) = default;
+            Base(Base&& src) noexcept = default;
+            Base& operator=(Base&& rhs) noexcept = default;
+        };
+        class Derived final : public Base
+        {
+        public:
+            Derived() = default;
+            ~Derived() override = default;
+            Derived(const Derived& src) = default;
+            Derived& operator=(const Derived& rhs) = default;
+            Derived(Derived&& src) noexcept = default;
+            Derived& operator=(Derived&& rhs) noexcept = default;
+        };
+        void study028() {
+            Base* b;
+            Derived* d{ new Derived() };
+            b = d; // 업캐스트
+            d = dynamic_cast<Derived*>(b); // 다운 캐스트
+            Base base;
+            Derived derived;
+            Base& base_ref{ base };
+            try {
+                Derived& derived_ref{ dynamic_cast<Derived&>(base_ref) };
+            } catch (const std::bad_cast&) {
+                cerr << "Bad Cast!" << endl;
+                return;
+            }
+        }
+        void study029() {
+            Base base;
+            Base& base_ref{ base };
+            Derived derived;
+            Derived& derived_ref{ derived };
+            try {
+                derived_ref = dynamic_cast<Derived&>(base_ref);
+            } catch (const std::bad_cast&) {
+                cerr << "Bad cast! \u25A1" << endl;
+                return;
+            }
+            cout << "success dynamic_cast. \u25A0" << endl;
+        }
     }
 }
