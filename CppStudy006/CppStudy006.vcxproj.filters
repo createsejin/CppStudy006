@@ -116,5 +116,8 @@
     <ClInclude Include="FirstFile.h">
       <Filter>Source Files\study11</Filter>
     </ClInclude>
+    <ClInclude Include="AnotherFile.h">
+      <Filter>Source Files\study11</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

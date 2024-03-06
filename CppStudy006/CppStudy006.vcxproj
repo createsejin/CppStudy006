@@ -167,6 +167,7 @@
     <ClCompile Include="weather_prediction.ixx" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnotherFile.h" />
     <ClInclude Include="FirstFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -9,7 +9,7 @@ import std;
 using namespace std;
 int main() {
     std::cout << "Program start" << std::endl;
-    test();
+    cout << std::format("the int = {}", study11_003::x) << endl;
     //_CrtDumpMemoryLeaks();
 }
 
