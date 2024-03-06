@@ -54,11 +54,15 @@ export namespace hr
     class Manager final : public Employee
     {
     public:
-        auto to_string() const -> std::string override;
+        Manager(std::string_view first_name, std::string_view last_name, unsigned int id);
+        Manager(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
+        auto to_string() const->std::string override;
     };
     class Director final : public Employee
     {
     public:
+        Director(std::string_view first_name, std::string_view last_name, unsigned int id);
+        Director(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
         auto to_string() const -> std::string override;
     };
 

@@ -1,5 +1,6 @@
 module study10;
 import std;
+import person02;
 using namespace std;
 namespace study10::study01
 {
@@ -584,5 +585,20 @@ namespace study10::study04
             }
             cout << "success dynamic_cast. \u25A0" << endl;
         }
+    }
+        
+    using namespace hr;
+    void study030() {
+        std::vector<std::unique_ptr<Person>> vec;
+        auto person1{ std::make_unique<Person>("SeJin"sv, "Bae"sv) };
+        vec.push_back(std::move(person1));
+        auto person2{ std::make_unique<Employee>("SeHee"sv, "Bae"sv, "SBB"sv, 21) };
+        vec.push_back(std::move(person2));
+        auto person3{ std::make_unique<Manager>("I"sv, "U"sv, 45) };
+        vec.push_back(std::move(person3));
+        auto person4{ std::make_unique<Director>("DeWoo"sv, "Lee"sv, "DV"sv, 67) };
+        vec.push_back(std::move(person4));
+
+        
     }
 }

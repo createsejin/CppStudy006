@@ -264,14 +264,32 @@ namespace hr
     auto Employee::to_string() const -> std::string {
         std::string str{ Person::to_string() };
         const std::string id_str{ std::to_string(employee_id_) };
-        str += id_str;
+        str += ", id=" + id_str;
         return str;
     }
     //----------------------------------Manager---------------------------------------------//
+    Manager::Manager(const std::string_view first_name, const std::string_view last_name, const unsigned int id)
+        : Employee(first_name, last_name, id)
+    {
+    }
+    Manager::Manager(const std::string_view first_name, const std::string_view last_name,
+        const std::string_view initial, const unsigned int id)
+        : Employee(first_name, last_name, initial, id)
+    {
+    }
     auto Manager::to_string() const -> std::string {
         return Employee::to_string();
     }
     //----------------------------------Director--------------------------------------------//
+    Director::Director(const std::string_view first_name, const std::string_view last_name, const unsigned int id)
+	    : Employee(first_name, last_name, id)
+    {
+    }
+    Director::Director(const std::string_view first_name, const std::string_view last_name, 
+        const std::string_view initial, const unsigned int id)
+	    : Employee(first_name, last_name, initial, id)
+    {
+    }
     auto Director::to_string() const -> std::string {
         return Employee::to_string();
     }
