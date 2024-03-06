@@ -47,6 +47,10 @@ export namespace hr
         ~Employee() override = default;
         Employee(std::string_view first_name, std::string_view last_name, unsigned int id);
         Employee(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
+
+        [[nodiscard]] auto get_id() const -> unsigned int { return employee_id_; }
+        void set_id(const unsigned int value) { employee_id_ = value; }
+
         void print_info() const override;
         auto to_string() const->std::string override;
     };
@@ -54,15 +58,14 @@ export namespace hr
     class Manager final : public Employee
     {
     public:
-        Manager(std::string_view first_name, std::string_view last_name, unsigned int id);
-        Manager(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
+        using Employee::Employee;
         auto to_string() const->std::string override;
+        
     };
     class Director final : public Employee
     {
     public:
-        Director(std::string_view first_name, std::string_view last_name, unsigned int id);
-        Director(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
+        using Employee::Employee;
         auto to_string() const -> std::string override;
     };
 

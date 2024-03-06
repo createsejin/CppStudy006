@@ -257,6 +257,7 @@ namespace hr
 	        : Person(first_name, last_name, initial), employee_id_(id)
     {        
     }
+
     void Employee::print_info() const {
         cout << std::format("{}: {} {}, id={}", get_initial(), 
             get_first_name(), get_last_name(), employee_id_) << endl;
@@ -268,29 +269,15 @@ namespace hr
         return str;
     }
     //----------------------------------Manager---------------------------------------------//
-    Manager::Manager(const std::string_view first_name, const std::string_view last_name, const unsigned int id)
-        : Employee(first_name, last_name, id)
-    {
-    }
-    Manager::Manager(const std::string_view first_name, const std::string_view last_name,
-        const std::string_view initial, const unsigned int id)
-        : Employee(first_name, last_name, initial, id)
-    {
-    }
     auto Manager::to_string() const -> std::string {
-        return Employee::to_string();
+        string str{ Employee::to_string() };
+        str = "Manager: " + str;
+        return str;
     }
-    //----------------------------------Director--------------------------------------------//
-    Director::Director(const std::string_view first_name, const std::string_view last_name, const unsigned int id)
-	    : Employee(first_name, last_name, id)
-    {
-    }
-    Director::Director(const std::string_view first_name, const std::string_view last_name, 
-        const std::string_view initial, const unsigned int id)
-	    : Employee(first_name, last_name, initial, id)
-    {
-    }
+    //----------------------------------Director--------------------------------------------//    
     auto Director::to_string() const -> std::string {
-        return Employee::to_string();
+        string str{ Employee::to_string() };
+        str = "Director: " + str;
+        return str;
     }
 }
