@@ -599,6 +599,8 @@ namespace study10::study04
         auto person4{ std::make_unique<Director>("DeWoo"sv, "Lee"sv, "DV"sv, 67) };
         vec.push_back(std::move(person4));
 
-        
+        for (const auto& person : vec) {
+            cout << person->to_string() << endl;
+        }
     }
 }
