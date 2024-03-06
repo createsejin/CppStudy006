@@ -141,6 +141,10 @@
     <ClCompile Include="datamodel.ixx" />
     <ClCompile Include="datamodel.person.ixx" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math01.cpp" />
+    <ClCompile Include="math01.ixx" />
+    <ClCompile Include="math01_helpers.cpp" />
+    <ClCompile Include="math01_helpers.ixx" />
     <ClCompile Include="my_weather_prediction.ixx" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="person.ixx" />

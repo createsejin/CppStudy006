@@ -87,5 +87,17 @@
     <ClCompile Include="datamodel.address.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
+    <ClCompile Include="math01.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="math01_helpers.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="math01.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="math01_helpers.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

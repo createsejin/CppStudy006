@@ -4,11 +4,12 @@
 //#include <stdlib.h>
 //#include <crtdbg.h>
 import std;
-import datamodel;
+import math;
 
+using namespace std;
 int main() {
     std::cout << "Program start" << std::endl;
-    datamodel::Address a;
+    cout << math01::super_log(0.0, 0.0) << endl;
     //_CrtDumpMemoryLeaks();
 }
 
