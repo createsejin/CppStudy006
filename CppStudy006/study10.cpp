@@ -486,7 +486,56 @@ namespace study10::study04
     namespace case019
     {
         void study025() {
-
+            int i{ 3 };
+            int j{ 4 };
+            double result{ static_cast<double>(i) / j };
         }
+        class Base
+        {
+        public:
+            virtual ~Base() = default;
+        };
+        class Derived final : public Base
+        {
+        public:
+            ~Derived() = default;
+        };
+        void study026() {
+            Base* base{ nullptr };
+            Derived* derived{ new Derived{} };
+            base = derived;
+            derived = static_cast<Derived*>(base); // 다운캐스트
+            delete derived;
+
+            Base base2;
+            Derived derived2;
+            Base& base_ref{ derived2 };
+            Derived& derived_ref{ static_cast<Derived&>(base_ref) };
+
+            const Base* base3{ new Base() };
+            //Derived* derived3{ static_cast<Derived*>(base3) }; // 예상치 못한 결과가 생길 수 있다.
+            delete base3;
+        }
+        // p.583
+        class X {};
+        class Y {};
+        void study027() { // 서로 관련이 없는 타입 끼리 변환할때 
+            X x; Y y;
+            X* xp{ &x }; Y* yp{ &y };
+            xp = reinterpret_cast<X*>(yp);
+            void* p{ xp }; // 보통의 방법
+            xp = static_cast<X*>(p); // 다시 되돌릴때에는 반드시 static_cast를 사용해야한다.
+            X& xr{ x };
+            Y& yr{ reinterpret_cast<Y&>(x) };
+            // p.584 std::bit_cast
+            constexpr float as_float{ 1.23f };            
+            if (const auto as_uint{ bit_cast<unsigned int>(as_float) };
+                bit_cast<float>(as_uint) == as_float) cout << "Roundtrip success. \u25A0" << endl;
+            // bit_cast를 쉽게 복제할 수 있는 타입에 대한 바이너리 I/O에 사용된다. p.584 참고
+        }
+    }
+    namespace case020
+    {
+
     }
 }

@@ -57,6 +57,12 @@ namespace study10
 		namespace case019
 		{
 			export void study025();
+			export void study026();
+			export void study027();
+		}
+		namespace case020
+		{
+			
 		}
 	}
 }
