@@ -3,12 +3,12 @@
 //#define _CRTDBG_MAP_ALLOC
 //#include <stdlib.h>
 //#include <crtdbg.h>
-#include <iostream>
+import std;
 import study10;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    study10::study03::case04::study008();
+    study10::study04::case17::study023();
     //_CrtDumpMemoryLeaks();
 }
 

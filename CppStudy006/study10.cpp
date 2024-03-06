@@ -1,7 +1,5 @@
-module;
-#include <iostream>
 module study10;
-
+import std;
 using namespace std;
 namespace study10::study01
 {
@@ -368,6 +366,86 @@ namespace study10::study03
             if (myDerived != nullptr) {
                 // doing something
             }
+        }
+    }
+}
+namespace study10::study04
+{
+    namespace case17
+    {
+        class Secret
+        {
+        public:
+            virtual ~Secret() = default;
+        protected:
+            virtual void dontTell() { cout << "I'll never tell." << endl; }
+        };
+        class Blabber final : public Secret
+        {
+        public:
+            using Secret::dontTell;
+        };
+        void study022() {
+            Blabber my_blabber;
+            my_blabber.dontTell();
+            Secret& ref{ my_blabber };
+            //ref.donTell(); // compile error. Secret::dontTell() is protected method.
+            Secret* ptr{ &my_blabber };
+            //ptr->donTell(); // comile error. Secret::dontTell() is protected method.
+            // ptr point to stack object. so It's not have to call delete deallocator.
+        }
+        class Base
+        {
+        public:
+            virtual ~Base() = default;
+            Base() = default;
+            Base(const Base& src) {}
+            Base& operator=(const Base& rhs) = default;
+        };
+        class Derived final : public Base
+        {
+        public:
+            Derived() = default;
+            Derived(const Derived& src) : Base{src} {}
+            Derived& operator=(const Derived& rhs) {
+                if (&rhs == this) return *this;
+                Base::operator=(rhs);
+                return *this;
+            }
+        };
+        // p.576 실행 시간 타입 정보
+        class Animal { public: virtual ~Animal() = default; };
+        class Dog final : public Animal {};
+        class Bird final : public Animal {};
+        void speak(const Animal& animal) {
+            if (typeid(animal) == typeid(Dog)) {
+                cout << "Woof!" << endl;
+            }
+            else if (typeid(animal) == typeid(Bird)) {
+                cout << "Chirp!" << endl;
+            }
+        }
+        // typeid 연산자를 로깅 및 디버깅 용도로 활용하기
+        class Loggable
+        {
+        public:
+            virtual ~Loggable() = default;
+            virtual auto getLogMessage() const -> std::string = 0;
+        };
+        class Foo final : public Loggable
+        {
+        public:
+            auto getLogMessage() const -> std::string override {
+                return "Hello logger.";
+            }
+        };
+        void logObject(const Loggable& loggableObject) {
+            cout << typeid(loggableObject).name() << ": "
+                << loggableObject.getLogMessage() << endl;
+        }
+        void study023() {
+            Foo foo;
+            logObject(foo);
         }
     }
 }
