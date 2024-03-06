@@ -1,4 +1,4 @@
-export module datamodel.address;
+export module datamodel:address;
 
 export namespace datamodel
 {

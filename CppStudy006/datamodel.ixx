@@ -1,6 +1,6 @@
 export module datamodel;
-export import datamodel.person;
-export import datamodel.address;
+export import :person;
+export import :address;
 import std;
 export namespace datamodel
 {

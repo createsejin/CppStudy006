@@ -1,4 +1,4 @@
-module datamodel.address;
+module datamodel;
 import std;
 using namespace std;
 

@@ -4,11 +4,11 @@
 //#include <stdlib.h>
 //#include <crtdbg.h>
 import std;
-import study10;
+import datamodel;
 
 int main() {
     std::cout << "Program start" << std::endl;
-    study10::study04::study031();
+    datamodel::Address a;
     //_CrtDumpMemoryLeaks();
 }
 

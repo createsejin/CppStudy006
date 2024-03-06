@@ -1,4 +1,4 @@
-export module datamodel.person;
+export module datamodel:person;
 
 export namespace datamodel
 {
