@@ -48,6 +48,7 @@ export namespace hr
         Employee(std::string_view first_name, std::string_view last_name, unsigned int id);
         Employee(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
         void print_info() const override;
+        auto to_string() const->std::string override;
     };
 
     class Manager final : public Employee

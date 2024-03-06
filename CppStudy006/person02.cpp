@@ -261,4 +261,10 @@ namespace hr
         cout << std::format("{}: {} {}, id={}", get_initial(), 
             get_first_name(), get_last_name(), employee_id_) << endl;
     }
+    auto Employee::to_string() const -> std::string {
+        std::string str{ Person::to_string() };
+        const std::string id_str{ std::to_string(employee_id_) };
+        str += id_str;
+        return str;
+    }
 }
