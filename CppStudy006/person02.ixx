@@ -54,11 +54,12 @@ export namespace hr
     class Manager final : public Employee
     {
     public:
-        
+        auto to_string() const -> std::string override;
     };
     class Director final : public Employee
     {
     public:
+        auto to_string() const -> std::string override;
     };
 
     void swap(Person& first, Person& second) noexcept;

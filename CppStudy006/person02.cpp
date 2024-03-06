@@ -267,4 +267,12 @@ namespace hr
         str += id_str;
         return str;
     }
+    //----------------------------------Manager---------------------------------------------//
+    auto Manager::to_string() const -> std::string {
+        return Employee::to_string();
+    }
+    //----------------------------------Director--------------------------------------------//
+    auto Director::to_string() const -> std::string {
+        return Employee::to_string();
+    }
 }
