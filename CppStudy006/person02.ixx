@@ -1,9 +1,9 @@
 export module person02;
 import std;
 
-namespace person02
-{
-    export class Person
+export namespace hr
+{   // p.587 연습문제
+    class Person
     {
         std::string first_name_;
         std::string last_name_;
@@ -14,7 +14,7 @@ namespace person02
         friend void swap(Impl& first, Impl& second) noexcept;
     public:
         Person();
-        ~Person();
+        virtual ~Person();
         Person(const Person& src);
         Person& operator=(const Person& rhs);
         Person(Person&& rhs) noexcept;
@@ -27,7 +27,8 @@ namespace person02
         void set_last_name(std::string_view last_name) const;
         [[nodiscard]] auto get_initial() const->std::string&;
         void set_initial(std::string_view initial) const;
-        void print_info() const;
+        virtual void print_info() const;
+        virtual auto to_string() const->std::string;
         void swap(const Person& other) const noexcept;
         //[[nodiscard]] std::weak_ordering operator<=>(const Person& rhs) const = default;
         bool operator==(const Person& rhs) const;
@@ -36,6 +37,27 @@ namespace person02
         bool operator>=(const Person& rhs) const;
         bool operator>(const Person& rhs) const;
         bool operator<=(const Person& rhs) const;
+    };
+
+    class Employee : public Person
+    {
+        unsigned int employee_id_{ 0 };
+    public:
+        Employee() = default;
+        ~Employee() override = default;
+        Employee(std::string_view first_name, std::string_view last_name, unsigned int id);
+        Employee(std::string_view first_name, std::string_view last_name, std::string_view initial, unsigned int id);
+        void print_info() const override;
+    };
+
+    class Manager final : public Employee
+    {
+    public:
+        
+    };
+    class Director final : public Employee
+    {
+    public:
     };
 
     void swap(Person& first, Person& second) noexcept;

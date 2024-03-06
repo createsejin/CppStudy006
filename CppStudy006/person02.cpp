@@ -2,7 +2,7 @@ module person02;
 
 using namespace std;
 
-namespace person02
+namespace hr
 {
     unsigned call_counter{ 0 };
     //------------------------------------Person::Impl--------------------------------------//
@@ -28,6 +28,7 @@ namespace person02
         [[nodiscard]] auto get_initial() -> std::string&;
         void set_initial(std::string_view initial);
         void print_info() const;
+        auto to_string() const->std::string;
         void swap(Impl& other) noexcept;
         bool operator==(const Impl& rhs) const;
         bool operator!=(const Impl& rhs) const;
@@ -79,7 +80,13 @@ namespace person02
     void Person::Impl::set_initial(const std::string_view initial) { this->initial_ = initial; }
 
     void Person::Impl::print_info() const {
-        cout << initial_ << ": " << first_name_ << " " << last_name_ << endl;
+        cout << std::format("{}: {} {}", initial_, first_name_, last_name_) << endl;
+    }
+
+    auto Person::Impl::to_string() const -> std::string
+    {
+        string str{ std::format("{}: {} {}", initial_, first_name_, last_name_) };
+        return str;
     }
 
     void Person::Impl::swap(Impl& other) noexcept {
@@ -127,12 +134,12 @@ namespace person02
 
     Person::Impl& Person::Impl::operator=(Impl&& rhs) noexcept
     {
-        person02::swap(*this, rhs);
+        hr::swap(*this, rhs);
         return *this;
     }
 
     Person::Impl::Impl(Impl&& rhs) noexcept {
-        person02::swap(*this, rhs);
+        hr::swap(*this, rhs);
     }
     //------------------------------------Person-------------------------------------------//
     auto Person::make_initial(const std::string_view first_name,
@@ -142,11 +149,11 @@ namespace person02
     Person::Person() {
         impl_ = std::make_unique<Impl>();
         cout << "Calling Person Default Constructor: " << call_counter++ << " ";
-        print_info();
+        Person::print_info();
     }
     Person::~Person() {
         cout << "Calling Person Destructor: " << call_counter++ << " ";
-        print_info();
+        Person::print_info();
     }
     Person::Person(const Person& src) { // 복제 생성자
         *impl_ = *src.impl_;
@@ -161,13 +168,13 @@ namespace person02
         : Person(first_name, last_name, make_initial(first_name, last_name))
     {
         cout << "Calling Person parameters 2 Constructor: " << call_counter++ << " ";
-        print_info();
+        Person::print_info();
     }
-    Person::Person(std::string_view first_name, std::string_view last_name, std::string_view initial)
+    Person::Person(const std::string_view first_name, const std::string_view last_name, const std::string_view initial)
     {
         impl_ = std::make_unique<Impl>(first_name, last_name, initial);
         cout << "Calling Person parameters 3 Constructor: " << call_counter++ << " ";
-        print_info();
+        Person::print_info();
     }
     auto Person::get_first_name() const -> std::string& { return impl_->get_first_name(); }
 
@@ -183,6 +190,11 @@ namespace person02
 
     void Person::print_info() const {
         impl_->print_info();
+    }
+
+    auto Person::to_string() const -> std::string
+    {
+        return impl_->to_string();
     }
 
     void Person::swap(const Person& other) const noexcept {
@@ -234,5 +246,19 @@ namespace person02
         if (is_lt(result)) cout << "less" << endl;
         if (is_gt(result)) cout << "great" << endl;
         if (is_eq(result)) cout << "equal" << endl;
+    }
+    //---------------------------Employee-----------------------------------------------------//
+    Employee::Employee(const std::string_view first_name, const std::string_view last_name, const unsigned int id)
+	    : Person(first_name, last_name), employee_id_(id)
+    {
+    }
+    Employee::Employee(const std::string_view first_name, const std::string_view last_name, 
+        const std::string_view initial, const unsigned int id)
+	        : Person(first_name, last_name, initial), employee_id_(id)
+    {        
+    }
+    void Employee::print_info() const {
+        cout << std::format("{}: {} {}, id={}", get_initial(), 
+            get_first_name(), get_last_name(), employee_id_) << endl;
     }
 }
