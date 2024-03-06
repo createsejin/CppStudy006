@@ -1,10 +1,9 @@
-#include "study11.h"
-import std;
+module study11;
 
 using namespace std;
-namespace study11_001
+namespace study11_002
 {
-	void study000() {
-		cout << std::format("I have wonderful treasure.") << endl;
+	void study001()
+	{
 	}
 }

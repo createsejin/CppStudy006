@@ -136,10 +136,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnotherFile.cpp" />
     <ClCompile Include="datamodel.address.cpp" />
     <ClCompile Include="datamodel.address.ixx" />
     <ClCompile Include="datamodel.ixx" />
     <ClCompile Include="datamodel.person.ixx" />
+    <ClCompile Include="FirstFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math01.cpp" />
     <ClCompile Include="math01.ixx" />
@@ -161,10 +163,11 @@
     <ClCompile Include="study10.cpp" />
     <ClCompile Include="study10.ixx" />
     <ClCompile Include="study11.cpp" />
+    <ClCompile Include="study11.ixx" />
     <ClCompile Include="weather_prediction.ixx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="study11.h" />
+    <ClInclude Include="FirstFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

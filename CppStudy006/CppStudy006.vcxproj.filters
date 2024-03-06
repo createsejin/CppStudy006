@@ -102,9 +102,18 @@
     <ClCompile Include="study11.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
+    <ClCompile Include="study11.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstFile.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="AnotherFile.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="study11.h">
+    <ClInclude Include="FirstFile.h">
       <Filter>Source Files\study11</Filter>
     </ClInclude>
   </ItemGroup>
