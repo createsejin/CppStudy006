@@ -156,7 +156,9 @@
     <ClCompile Include="person03.ixx" />
     <ClCompile Include="simulator01.ixx" />
     <ClCompile Include="simulator01_bike.ixx" />
+    <ClCompile Include="simulator01_car.cpp" />
     <ClCompile Include="simulator01_car.ixx" />
+    <ClCompile Include="simulator01_internal.ixx" />
     <ClCompile Include="spreadsheet.cpp" />
     <ClCompile Include="spreadsheet.ixx" />
     <ClCompile Include="spreadsheet_cell.cpp" />

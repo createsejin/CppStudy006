@@ -9,7 +9,7 @@ import study11;
 using namespace std;
 int main() {
     std::cout << "Program start" << std::endl;
-    study11_005::study002();
+    study11_005::study003();
     //_CrtDumpMemoryLeaks();
 }
 

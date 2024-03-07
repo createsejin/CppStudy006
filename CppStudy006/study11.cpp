@@ -39,4 +39,11 @@ namespace study11_005
 	void study002() {
 		print_ints(5, 5, 3, 4, 2, 1);
 	}
+	void study003() { // exercise 11-4
+		simulator01::CarSimulator car{};
+		car.set_odometer(20.0);
+		simulator01::BikeSimulator bike{};
+		bike.set_odometer(32.2);
+		//simulator01::convert_miles_to_km(23.0); //err: cannot call the partition module function.
+	}
 }

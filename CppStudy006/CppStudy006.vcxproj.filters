@@ -120,6 +120,12 @@
     <ClCompile Include="simulator01_bike.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
+    <ClCompile Include="simulator01_internal.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator01_car.cpp">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstFile.h">
