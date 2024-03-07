@@ -114,6 +114,12 @@
     <ClCompile Include="simulator01.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
+    <ClCompile Include="simulator01_car.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
+    <ClCompile Include="simulator01_bike.ixx">
+      <Filter>Source Files\study11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstFile.h">

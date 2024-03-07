@@ -1,21 +1,12 @@
-export module simulator01;
+export module simulator;
+export import :car;
+export import :bike;
 import std;
 
 using namespace std;
 export namespace simulator01
 {
-	class CarSimulator
-	{
-	public:
-		CarSimulator() { //
-			cout << "CarSimulator constructed." << endl;
-		}
-	};
-	class BikeSimulator
-	{
-	public:
-		BikeSimulator() {
-			cout << "BikeSimulator constructed." << endl;
-		}
-	};
+	void study002() {
+		
+	}
 }
