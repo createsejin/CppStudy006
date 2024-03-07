@@ -4,13 +4,13 @@
 //#include <stdlib.h>
 //#include <crtdbg.h>
 import std;
-import study11;
+import study12;
 
 using namespace std;
 int main() {
     std::cout << "Program start" << std::endl;
-    study11_005::study003();
-    //_CrtDumpMemoryLeaks();
+	study12_001::study001();
+	//_CrtDumpMemoryLeaks();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

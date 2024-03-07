@@ -30,117 +30,117 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="study09.ixx">
+    <ClCompile Include="study09\study09.ixx">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="study09.cpp">
+    <ClCompile Include="study09\study09.cpp">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="person.cpp">
+    <ClCompile Include="study09\person.cpp">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="person.ixx">
+    <ClCompile Include="study09\person.ixx">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="spreadsheet_cell.ixx">
+    <ClCompile Include="study09\spreadsheet_cell.ixx">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="spreadsheet_cell.cpp">
+    <ClCompile Include="study09\spreadsheet_cell.cpp">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="spreadsheet.ixx">
+    <ClCompile Include="study09\spreadsheet.ixx">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="spreadsheet.cpp">
+    <ClCompile Include="study09\spreadsheet.cpp">
       <Filter>Source Files\study09</Filter>
     </ClCompile>
-    <ClCompile Include="study10.ixx">
+    <ClCompile Include="study10\study10.ixx">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="study10.cpp">
+    <ClCompile Include="study10\study10.cpp">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="my_weather_prediction.ixx">
+    <ClCompile Include="study10\my_weather_prediction.ixx">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="weather_prediction.ixx">
+    <ClCompile Include="study10\weather_prediction.ixx">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="person02.ixx">
+    <ClCompile Include="study10\person02.ixx">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="person02.cpp">
+    <ClCompile Include="study10\person02.cpp">
       <Filter>Source Files\study10</Filter>
     </ClCompile>
-    <ClCompile Include="person03.ixx">
+    <ClCompile Include="study11\person03.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="person03.cpp">
+    <ClCompile Include="study11\person03.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="datamodel.ixx">
+    <ClCompile Include="study11\datamodel.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="datamodel.person.ixx">
+    <ClCompile Include="study11\datamodel.person.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="datamodel.address.ixx">
+    <ClCompile Include="study11\datamodel.address.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="datamodel.address.cpp">
+    <ClCompile Include="study11\datamodel.address.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="math01.ixx">
+    <ClCompile Include="study11\math01.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="math01_helpers.cpp">
+    <ClCompile Include="study11\math01_helpers.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="math01.cpp">
+    <ClCompile Include="study11\math01.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="math01_helpers.ixx">
+    <ClCompile Include="study11\math01_helpers.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="study11.cpp">
+    <ClCompile Include="study11\study11.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="study11.ixx">
+    <ClCompile Include="study11\study11.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="FirstFile.cpp">
+    <ClCompile Include="study11\FirstFile.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="AnotherFile.cpp">
+    <ClCompile Include="study11\AnotherFile.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="simulator01.ixx">
+    <ClCompile Include="study11\simulator01.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="simulator01_car.ixx">
+    <ClCompile Include="study11\simulator01_car.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="simulator01_bike.ixx">
+    <ClCompile Include="study11\simulator01_bike.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="simulator01_internal.ixx">
+    <ClCompile Include="study11\simulator01_internal.ixx">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="simulator01_car.cpp">
+    <ClCompile Include="study11\simulator01_car.cpp">
       <Filter>Source Files\study11</Filter>
     </ClCompile>
-    <ClCompile Include="study12.ixx">
+    <ClCompile Include="study12\study12.ixx">
       <Filter>Source Files\study12</Filter>
     </ClCompile>
-    <ClCompile Include="study12.cpp">
+    <ClCompile Include="study12\study12.cpp">
       <Filter>Source Files\study12</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FirstFile.h">
+    <ClInclude Include="study11\FirstFile.h">
       <Filter>Source Files\study11</Filter>
     </ClInclude>
-    <ClInclude Include="AnotherFile.h">
+    <ClInclude Include="study11\AnotherFile.h">
       <Filter>Source Files\study11</Filter>
     </ClInclude>
   </ItemGroup>
