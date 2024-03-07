@@ -21,8 +21,8 @@ namespace study12_001
 	using namespace game_board02;
 	using namespace spreadsheet01;
 
-	using IntGrid = Grid<int>;
-	void processIntGrid(IntGrid& grid) {}
+	/*using IntGrid = Grid<int>;
+	void processIntGrid(IntGrid& grid) {}*/
 
 	void study002() { // p.634
 		Grid<int> myIntGrid;

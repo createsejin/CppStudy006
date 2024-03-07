@@ -172,7 +172,6 @@
     <ClCompile Include="study10\study10.ixx" />
     <ClCompile Include="study11\study11.cpp" />
     <ClCompile Include="study11\study11.ixx" />
-    <ClCompile Include="study12\grid01.cpp" />
     <ClCompile Include="study12\grid01.ixx" />
     <ClCompile Include="study12\study12.cpp" />
     <ClCompile Include="study12\study12.ixx" />

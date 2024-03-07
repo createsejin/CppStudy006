@@ -147,9 +147,6 @@
     <ClCompile Include="study12\grid01.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="study12\grid01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">
