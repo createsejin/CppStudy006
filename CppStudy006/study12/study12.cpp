@@ -21,8 +21,8 @@ namespace study12_001
 	using namespace game_board02;
 	using namespace spreadsheet01;
 
-	/*using IntGrid = Grid<int>;
-	void processIntGrid(IntGrid& grid) {}*/
+	using IntGrid = Grid<int>;
+	void processIntGrid(IntGrid& grid) {}
 
 	void study002() { // p.634
 		Grid<int> myIntGrid;
@@ -52,4 +52,8 @@ namespace study12_001
 		const int x2 { myGridOnHeap->at(0, 0).value_or(0) };
 		if (x2 == 0) cout << "at(0, 0) is empty." << endl;
 	}
+}
+namespace study12_002
+{
+	
 }
