@@ -136,6 +136,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="study12\game_board01.ixx" />
+    <ClCompile Include="study12\game_piece01.ixx" />
     <ClCompile Include="study11\AnotherFile.cpp" />
     <ClCompile Include="study11\datamodel.address.cpp" />
     <ClCompile Include="study11\datamodel.address.ixx" />

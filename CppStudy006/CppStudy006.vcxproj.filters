@@ -135,6 +135,12 @@
     <ClCompile Include="study12\study12.cpp">
       <Filter>Source Files\study12</Filter>
     </ClCompile>
+    <ClCompile Include="study12\game_piece01.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\game_board01.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">
