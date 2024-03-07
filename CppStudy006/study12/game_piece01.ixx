@@ -10,7 +10,7 @@ namespace game_board01
 		virtual auto clone() const -> std::unique_ptr<GamePiece> = 0;
 	};
 
-	class ChessPiece final : public GamePiece
+	export class ChessPiece final : public GamePiece
 	{
 	public:
 		auto clone() const -> std::unique_ptr<GamePiece> override {

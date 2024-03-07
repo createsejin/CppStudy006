@@ -18,8 +18,8 @@ namespace game_board01
 		GameBoard(GameBoard&& src) noexcept = default;
 		GameBoard& operator=(GameBoard&& rhs) noexcept = default;
 
-		auto at(size_t x, size_t y) -> std::unique_ptr<GamePiece>&;
-		auto at(size_t x, size_t y) const -> const std::unique_ptr<GamePiece>&;
+		std::unique_ptr<GamePiece>& at(size_t x, size_t y);
+		const std::unique_ptr<GamePiece>& at(size_t x, size_t y) const;
 
 		[[nodiscard]] auto getHeight() const -> size_t { return height_; }
 		[[nodiscard]] auto getWidth() const -> size_t { return width_; }
