@@ -169,6 +169,8 @@
     <ClCompile Include="study10.ixx" />
     <ClCompile Include="study11.cpp" />
     <ClCompile Include="study11.ixx" />
+    <ClCompile Include="study12.cpp" />
+    <ClCompile Include="study12.ixx" />
     <ClCompile Include="weather_prediction.ixx" />
   </ItemGroup>
   <ItemGroup>
