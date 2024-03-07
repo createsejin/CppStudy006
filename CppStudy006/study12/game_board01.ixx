@@ -20,5 +20,12 @@ namespace game_board01
 
 		auto at(size_t x, size_t y) -> std::unique_ptr<GamePiece>&;
 		auto at(size_t x, size_t y) const -> const std::unique_ptr<GamePiece>&;
+
+		[[nodiscard]] auto getHeight() const -> size_t { return height_; }
+		[[nodiscard]] auto getWidth() const -> size_t { return width_; }
+
+		void swap(GameBoard& other) noexcept;
 	};
+
+	export void swap(GameBoard& first, GameBoard& second) noexcept;
 }
