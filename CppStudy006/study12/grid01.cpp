@@ -25,13 +25,11 @@ namespace game_board02
 		}
 	}
 	template<typename T>
-	std::optional<T>& Grid<T>::at(size_t x, size_t y)
-	{
+	std::optional<T>& Grid<T>::at(size_t x, size_t y)	{
 		return const_cast<std::optional<T>&>(std::as_const(*this).at(x, y));
 	}
 	template<typename T>
-	const std::optional<T>& Grid<T>::at(size_t x, size_t y) const
-	{
+	const std::optional<T>& Grid<T>::at(size_t x, size_t y) const {
 		verifyCoordinate(x, y);
 		return cells_[x][y];
 	}

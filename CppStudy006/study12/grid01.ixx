@@ -11,7 +11,9 @@ namespace game_board02
 	public:
 		static constexpr size_t DefaultWidth{ 10 };
 		static constexpr size_t DefaultHeight{ 10 };
+
 		explicit Grid(size_t width = DefaultWidth, size_t height = DefaultHeight);
+
 		virtual ~Grid() = default;
 		Grid(const Grid& src) = default;
 		Grid& operator=(const Grid& rhs) = default;
