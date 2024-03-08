@@ -5,6 +5,7 @@ import game_piece01;
 import grid01;
 import grid02;
 import grid03;
+import grid04;
 import spreadsheet_cell;
 
 using namespace std;
@@ -108,7 +109,14 @@ namespace study12_003
 	void study007() { // p.645
 		Grid<int> myIntGrid;
 		Grid<double> myDoubleGrid;
-		//myDoubleGrid = myIntGrid;
-		//Grid<double> newDoubleGrid{ myIntGrid };
+		myDoubleGrid = myIntGrid;
+		Grid<double> newDoubleGrid{ myIntGrid };
+	}
+}
+namespace study12_004
+{
+	using namespace game_board05;
+	void study008() { // p.648
+		
 	}
 }

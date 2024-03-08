@@ -175,6 +175,7 @@
     <ClCompile Include="study12\grid01.ixx" />
     <ClCompile Include="study12\grid02.ixx" />
     <ClCompile Include="study12\grid03.ixx" />
+    <ClCompile Include="study12\grid04.ixx" />
     <ClCompile Include="study12\study12.cpp" />
     <ClCompile Include="study12\study12.ixx" />
     <ClCompile Include="study10\weather_prediction.ixx" />

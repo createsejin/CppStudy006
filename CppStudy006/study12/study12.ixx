@@ -16,3 +16,7 @@ export namespace study12_003
 {
 	void study007();
 }
+export namespace study12_004
+{
+	void study008();
+}
