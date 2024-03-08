@@ -24,6 +24,11 @@ namespace game_board05
 		Grid(Grid&& src) noexcept;
 		Grid& operator=(Grid&& rhs) noexcept;
 
+		template<typename E, size_t Width2, size_t Height2>
+		Grid(Grid<E, Width2, Height2>&& src) noexcept;
+		template<typename E, size_t Width2, size_t Height2>
+		Grid& operator=(Grid<E, Width2, Height2>&& rhs) noexcept;
+
 		std::optional<T>& at(size_t x, size_t y);
 		const std::optional<T>& at(size_t x, size_t y) const;
 
@@ -45,10 +50,6 @@ namespace game_board05
 				std::format("{} must be less than {}.", y, Height)
 			};
 		}
-	}
-	export template<typename T, size_t Width, size_t Height>
-		void swap(Grid<T, Width, Height>& first, Grid<T, Width, Height>& second) noexcept {
-		first.swap(second);
 	}
 
 	template<typename T, size_t Width, size_t Height>
@@ -75,13 +76,25 @@ namespace game_board05
 
 	template<typename T, size_t Width, size_t Height> // reference p.454
 	Grid<T, Width, Height>::Grid(Grid&& src) noexcept { // move constructor
-		game_board05::swap(*this, src);
+		this->swap(src);
 	}
 
 	template<typename T, size_t Width, size_t Height> // move assignment operator
 	Grid<T, Width, Height>& Grid<T, Width, Height>::operator=(Grid&& rhs) noexcept {
-		game_board05::swap(*this, rhs);
+		this->swap(rhs);
 		return *this;
+	}
+
+	template<typename T, size_t Width, size_t Height>
+	template<typename E, size_t Width2, size_t Height2>
+	Grid<T, Width, Height>::Grid(Grid<E, Width2, Height2>&& src) noexcept {
+		
+	}
+
+	template<typename T, size_t Width, size_t Height>
+	template<typename E, size_t Width2, size_t Height2>
+	Grid<T, Width, Height>& Grid<T, Width, Height>::operator=(Grid<E, Width2, Height2>&& rhs) noexcept {
+
 	}
 
 	template<typename T, size_t Width, size_t Height>

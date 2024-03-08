@@ -117,6 +117,24 @@ namespace study12_004
 {
 	using namespace game_board05;
 	void study008() { // p.648
-		
+		constexpr size_t height{ 10 };
+		Grid<int, 10, height> my_grid;
+		// ReSharper disable once CppJoinDeclarationAndAssignment
+		Grid<int, 10, height> another_grid;
+		my_grid.at(2, 3) = 42;
+		cout << std::format("my_grid = {}\n", my_grid.at(2, 3).value_or(0));
+		//another_grid = my_grid;
+		another_grid = std::move(my_grid);
+		cout << std::format("another_grid = {}\n", another_grid.at(2, 3).value_or(0));
+		Grid<int, 11, 11> my_grid2;
+		my_grid2.at(10, 10) = 22;
+		my_grid2.at(2, 3) = 34;
+		Grid<int> another_grid2 = my_grid2;
+		cout << std::format("another_grid2.at(2, 3) = {}\n", another_grid2.at(2, 3).value_or(0));
+		Grid<int, 11, 11> my_grid3;
+		my_grid3.at(3, 3) = 69;
+		another_grid2 = std::move(my_grid3);
+		cout << std::format("another_grid2.at(2, 3) = {}\n", another_grid2.at(2, 3).value_or(0));
+		cout << std::format("another_grid2.at(3, 3) = {}\n", another_grid2.at(3, 3).value_or(0));
 	}
 }
