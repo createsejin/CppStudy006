@@ -194,6 +194,17 @@ namespace study12_005
 		}
 		return std::nullopt;
 	}
+
+	template<typename T, size_t N>
+	std::optional<size_t> Find(const T& value, const T(&arr)[N]) {
+		return Find(value, arr, N);
+	}
+
+	void print_res(const std::optional<size_t> res, const unsigned int num) {
+		if (res.has_value()) cout << std::format("result{} = {}\n", num, res.value());
+		else cout << std::format("result{} = not found.\n", num);
+	}
+
 	void study012() {
 		constexpr int myInt{ 3 }, intArray[]{ 1, 2, 3, 4 };
 		constexpr size_t sizeIntArray{ size(intArray) };
@@ -205,12 +216,10 @@ namespace study12_005
 		constexpr size_t sizeDoubleArray{ size(intArray) };
 		// 타입을 명시적으로 호출
 		auto result2{ Find<double>(myDouble, doubleArray, sizeDoubleArray) };
-		if (result2.has_value()) cout << std::format("result2 = {}\n", result2.value());
-		else cout << "result2 = not found.\n";
+		print_res(result2, 2);
 
 		result2 = Find<double>(myInt, doubleArray, sizeDoubleArray);
-		if (result2.has_value()) cout << std::format("result3 = {}\n", result2.value());
-		else cout << "result3 = not found.\n";
+		print_res(result2, 3);
 
 		using namespace spreadsheet01;
 		const SpreadsheetCell cell1{ 10.0 };
@@ -221,7 +230,11 @@ namespace study12_005
 		};
 		constexpr size_t sizeCellArray{ size(cellArray) };
 		result2 = Find<SpreadsheetCell>(cell1, cellArray, sizeCellArray);
-		if (result2.has_value()) cout << std::format("result4 = {}\n", result2.value());
-		else cout << "result4 = not found.\n";
+		print_res(result2, 4);
+	}
+	void study013() { // p.658
+		constexpr int myInt{ 3 }, intArray[]{ 1, 2, 3, 4 };
+		const auto res{ Find(myInt, intArray) };
+		print_res(res, 1);
 	}
 }
