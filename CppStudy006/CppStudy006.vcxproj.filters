@@ -156,6 +156,15 @@
     <ClCompile Include="study12\grid04.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="study12\grid05.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid05_main.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid05_string.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">

@@ -6,6 +6,7 @@ import grid01;
 import grid02;
 import grid03;
 import grid04;
+import grid05;
 import spreadsheet_cell;
 
 using namespace std;
@@ -136,5 +137,33 @@ namespace study12_004
 		another_grid2 = std::move(my_grid3);
 		cout << std::format("another_grid2.at(2, 3) = {}\n", another_grid2.at(2, 3).value_or(0));
 		cout << std::format("another_grid2.at(3, 3) = {}\n", another_grid2.at(3, 3).value_or(0));
+	}
+}
+namespace study12_005
+{
+	using namespace game_board06;
+	
+	void study009() {
+		Grid<int> myIntGrid;
+		Grid<const char*> stringGrid1{ 2, 2 };
+		const char* dummy{ "dummy" };
+		stringGrid1.at(0, 0) = "hello";
+		stringGrid1.at(0, 1) = dummy;
+		stringGrid1.at(1, 0) = dummy;
+		stringGrid1.at(1, 1) = "there";
+		const Grid<const char*> stringGrid2{ stringGrid1 };
+		stringGrid1.print_at("stringGrid1", 0, 0);
+		stringGrid1.print_at("stringGrid1", 0, 1);
+		stringGrid1.print_at("stringGrid1", 1, 0);
+		stringGrid1.print_at("stringGrid1", 1, 1);
+		stringGrid2.print_at("stringGrid2", 0, 0);
+		stringGrid2.print_at("stringGrid2", 0, 1);
+		stringGrid2.print_at("stringGrid2", 1, 0);
+		stringGrid2.print_at("stringGrid2", 1, 1);
+		const Grid stringGrid3{ std::move(stringGrid1) };
+		stringGrid3.print_at("stringGrid3", 0, 0);
+		stringGrid3.print_at("stringGrid3", 0, 1);
+		stringGrid3.print_at("stringGrid3", 1, 0);
+		stringGrid3.print_at("stringGrid3", 1, 1);
 	}
 }
