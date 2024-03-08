@@ -80,6 +80,23 @@ namespace study12_002
 		Grid<int, 5, 5> a_fourth_grid;
 	}
 	void study005() {
-		
+		auto pair2{ std::make_pair(1, 2.3) };
+		std::pair pair3{ 1, 2.3 };
+		// CTAD가 작동하기 위한 조건 :
+		// 1. 클래스 템플릿 매개변수의 디폴트값이 모두 지정되어있다.
+		// 2. 생성자에서 모든 매개변수를 사용하도록 작성되어 있다.
+	}
+	// p.643 사용자 정의 템플릿 매개변수 추론
+	template<typename  T>
+	class SpreadsheedCell
+	{
+		T content_;
+	public:
+		explicit SpreadsheedCell(T t) : content_(std::move(t)) {}
+		const T& get_content() const { return content_; }
+	};
+	void study006() {
+		const string my_string{ "Hello world!" };
+		SpreadsheedCell cell{ my_string };
 	}
 }

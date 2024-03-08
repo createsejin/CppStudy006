@@ -21,8 +21,8 @@ namespace game_board03
 		std::optional<T>& at(size_t x, size_t y);
 		const std::optional<T>& at(size_t x, size_t y) const;
 
-		[[nodiscard]] static auto get_height() { return Height; }
-		[[nodiscard]] static auto get_width() { return Width; }
+		[[nodiscard]] static auto get_height() -> size_t { return Height; }
+		[[nodiscard]] static auto get_width() -> size_t { return Width; }
 
 		void swap(Grid& other) noexcept;
 	};
