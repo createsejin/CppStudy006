@@ -12,7 +12,7 @@ namespace game_board03
 		static void verify_coordinate(size_t x, size_t y);
 	public:
 		Grid() = default;
-		~Grid() = default;
+		~Grid() = default; // virtual method와 destructor는 메서드 템플릿으로 만들 수 없다.
 		Grid(const Grid& src) = default;
 		Grid& operator=(const Grid& rhs) = default;
 		Grid(Grid&& src) noexcept;

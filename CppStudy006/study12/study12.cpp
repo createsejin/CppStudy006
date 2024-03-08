@@ -4,6 +4,7 @@ import game_board01;
 import game_piece01;
 import grid01;
 import grid02;
+import grid03;
 import spreadsheet_cell;
 
 using namespace std;
@@ -95,8 +96,19 @@ namespace study12_002
 		explicit SpreadsheedCell(T t) : content_(std::move(t)) {}
 		const T& get_content() const { return content_; }
 	};
+	
 	void study006() {
 		const string my_string{ "Hello world!" };
 		SpreadsheedCell cell{ my_string };
+	}
+}
+namespace study12_003
+{
+	using namespace game_board04;
+	void study007() { // p.645
+		Grid<int> myIntGrid;
+		Grid<double> myDoubleGrid;
+		//myDoubleGrid = myIntGrid;
+		//Grid<double> newDoubleGrid{ myIntGrid };
 	}
 }
