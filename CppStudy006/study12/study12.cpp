@@ -1,3 +1,5 @@
+module;
+#include <cstring>
 module study12;
 import std;
 import game_board01;
@@ -195,9 +197,18 @@ namespace study12_005
 		return std::nullopt;
 	}
 
-	template<typename T, size_t N>
+	template<typename T, size_t N> // 배열 참조를 이용하면 컴파일 시점에 배열 크기를 알 수 있다.
 	std::optional<size_t> Find(const T& value, const T(&arr)[N]) {
 		return Find(value, arr, N);
+	}
+	// p.659 함수 템플릿 오버로딩
+	std::optional<size_t> Find(const char* value, const char** arr, const size_t size) {
+		for (size_t i{ 0 }; i < size; ++i) {
+			if (strcmp(arr[i], value) == 0) {
+				return i;
+			}
+		}
+		return std::nullopt;
 	}
 
 	void print_res(const std::optional<size_t> res, const unsigned int num) {
@@ -235,6 +246,13 @@ namespace study12_005
 	void study013() { // p.658
 		constexpr int myInt{ 3 }, intArray[]{ 1, 2, 3, 4 };
 		const auto res{ Find(myInt, intArray) };
+		print_res(res, 1);
+	}
+	void study014() {
+		const char* word{ "two" };
+		const char* words[]{ "one", "two", "three", "four" };
+		constexpr size_t sizeWords{ std::size(words) };
+		const auto res{ Find(word, words, sizeWords) };
 		print_res(res, 1);
 	}
 }
