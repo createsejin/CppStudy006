@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="study12\game_board01.cpp" />
     <ClCompile Include="study12\game_board01.ixx" />
+    <ClCompile Include="study12\game_board06.ixx" />
     <ClCompile Include="study12\game_piece01.ixx" />
     <ClCompile Include="study11\AnotherFile.cpp" />
     <ClCompile Include="study11\datamodel.address.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="study10\study10.ixx" />
     <ClCompile Include="study11\study11.cpp" />
     <ClCompile Include="study11\study11.ixx" />
+    <ClCompile Include="study12\game_piece06.ixx" />
     <ClCompile Include="study12\grid01.ixx" />
     <ClCompile Include="study12\grid02.ixx" />
     <ClCompile Include="study12\grid03.ixx" />

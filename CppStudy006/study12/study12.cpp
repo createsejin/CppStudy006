@@ -8,6 +8,8 @@ import grid03;
 import grid04;
 import grid05;
 import spreadsheet_cell;
+import game_board06;
+import game_piece06;
 
 using namespace std;
 namespace study12_001
@@ -165,5 +167,61 @@ namespace study12_005
 		stringGrid3.print_at("stringGrid3", 0, 1);
 		stringGrid3.print_at("stringGrid3", 1, 0);
 		stringGrid3.print_at("stringGrid3", 1, 1);
+	}
+	void study010() { // p.655
+		GameBoard<ChessPiece> chess_board{ 8, 8 };
+		ChessPiece pawn;
+		chess_board.at(0, 0) = pawn;
+		chess_board.move(0, 0, 0, 1);
+	}
+	// p.656
+	template<typename T1, typename T2>
+	class MyClassTemplate {};
+	using other_name1 = MyClassTemplate<int, double>;
+	template<typename T1>
+	using other_name2 = MyClassTemplate<T1, double>;
+	void study011() {
+		other_name1 my_class1;
+		other_name2<int> my_class2;
+	}
+	// p.657 함수 템플릿
+	template<typename T>
+	std::optional<size_t> Find(const T& value, const T* arr, const size_t size) {
+		for (size_t i{0}; i < size; ++i) {
+			if (arr[i] == value) {
+				return i;
+			}
+		}
+		return std::nullopt;
+	}
+	void study012() {
+		constexpr int myInt{ 3 }, intArray[]{ 1, 2, 3, 4 };
+		constexpr size_t sizeIntArray{ size(intArray) };
+
+		size_t result{ Find<int>(myInt, intArray, sizeIntArray).value_or(-1) };
+		cout << std::format("result1 = {}\n", result);
+
+		constexpr double myDouble{ 5.6 }, doubleArray[]{ 1.2, 3.4, 5.7, 7.5 };
+		constexpr size_t sizeDoubleArray{ size(intArray) };
+		// 타입을 명시적으로 호출
+		auto result2{ Find<double>(myDouble, doubleArray, sizeDoubleArray) };
+		if (result2.has_value()) cout << std::format("result2 = {}\n", result2.value());
+		else cout << "result2 = not found.\n";
+
+		result2 = Find<double>(myInt, doubleArray, sizeDoubleArray);
+		if (result2.has_value()) cout << std::format("result3 = {}\n", result2.value());
+		else cout << "result3 = not found.\n";
+
+		using namespace spreadsheet01;
+		const SpreadsheetCell cell1{ 10.0 };
+		const SpreadsheetCell cellArray[] {
+			SpreadsheetCell{3.0},
+			SpreadsheetCell{4.0},
+			SpreadsheetCell{10.0},
+		};
+		constexpr size_t sizeCellArray{ size(cellArray) };
+		result2 = Find<SpreadsheetCell>(cell1, cellArray, sizeCellArray);
+		if (result2.has_value()) cout << std::format("result4 = {}\n", result2.value());
+		else cout << "result4 = not found.\n";
 	}
 }
