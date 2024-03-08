@@ -4,7 +4,7 @@ import std;
 using namespace std;
 namespace game_board03
 {
-	export template<typename T, size_t Width, size_t Height>
+	export template<typename T = int, size_t Width = 10, size_t Height = 10>
 	class Grid
 	{
 		size_t width_{ 0 }, height_{ 0 };

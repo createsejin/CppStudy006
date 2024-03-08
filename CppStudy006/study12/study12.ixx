@@ -8,4 +8,6 @@ export namespace study12_001
 export namespace study12_002
 {
 	void study003();
+	void study004();
+	void study005();
 }

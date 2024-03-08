@@ -57,16 +57,29 @@ namespace study12_001
 namespace study12_002
 {
 	using namespace game_board03;
+
+	// template 매개변수에 인수를 전달할 목적의 함수라면, trailing return type을 사용하면 안되는것 같다.
+	constexpr size_t get_height() { return 10; }
+
 	void study003() {
 		constexpr size_t height{ 10 };
 		Grid<int, 10, height> my_grid;
 		// ReSharper disable once CppJoinDeclarationAndAssignment
-		Grid<int, 10, 10> another_grid;
+		Grid<int, 10, get_height()> another_grid;
 		my_grid.at(2, 3) = 42;
 		cout << std::format("my_grid = {}\n", my_grid.at(2, 3).value_or(0));
 		//another_grid = my_grid;
 		another_grid = std::move(my_grid);
-		//cout << std::format("my_grid = {}\n", my_grid.at(2, 3).value_or(0));
+		//cout << std::format("my_grid = {}\n", my_grid.at(2, 3).value_or(0)); //move된 객체는 사용하지 않아야한다.
 		cout << std::format("another_grid = {}\n", another_grid.at(2, 3).value_or(0));
+	}
+	void study004() { // p.641
+		Grid<> my_int_grid;
+		Grid<int> my_grid;
+		Grid<int, 5> another_grid;
+		Grid<int, 5, 5> a_fourth_grid;
+	}
+	void study005() {
+		
 	}
 }
