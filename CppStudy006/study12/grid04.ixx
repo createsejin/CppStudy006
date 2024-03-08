@@ -55,6 +55,7 @@ namespace game_board05
 	template<typename T, size_t Width, size_t Height>
 	template<typename E, size_t Width2, size_t Height2>
 	Grid<T, Width, Height>::Grid(const Grid<E, Width2, Height2>& src) {
+		cout << "copy constructor called.\n";
 		for (size_t i{0}; i < Width; ++i) {
 			for (size_t j{0}; j < Height; ++j) {
 				if (i < Width2 && j < Height2) {
@@ -88,13 +89,27 @@ namespace game_board05
 	template<typename T, size_t Width, size_t Height>
 	template<typename E, size_t Width2, size_t Height2>
 	Grid<T, Width, Height>::Grid(Grid<E, Width2, Height2>&& src) noexcept {
-		
+		cout << "move constructor called.\n";
+		for (size_t i{0}; i < Width; ++i) {
+			for (size_t j{0}; j < Height; ++j) {
+				if (i < Width2 && j < Height2) {
+					cells_[i][j] = std::move(src.at(i, j));
+				} else {
+					cells_[i][j].reset();
+				}
+			}
+		}
 	}
 
 	template<typename T, size_t Width, size_t Height>
 	template<typename E, size_t Width2, size_t Height2>
 	Grid<T, Width, Height>& Grid<T, Width, Height>::operator=(Grid<E, Width2, Height2>&& rhs) noexcept {
-
+		// 여기서 매개변수 rhs는 rvalue가 아닌 lvalue다.
+		// 따라서 lvalue를 rvalue로 캐스팅하는 std::move를 사용해서 생성자를 호출해야
+		// move constructor를 호출할 수 있다.
+		Grid temp{ std::move(rhs) };
+		swap(temp);
+		return *this;
 	}
 
 	template<typename T, size_t Width, size_t Height>
