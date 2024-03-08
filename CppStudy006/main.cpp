@@ -8,8 +8,8 @@ import study12;
 
 using namespace std;
 int main() {
-    std::cout << "Program start" << std::endl;
-	study12_001::study002();
+	cout << "Program start\n";
+	study12_002::study003();
 	//_CrtDumpMemoryLeaks();
 }
 

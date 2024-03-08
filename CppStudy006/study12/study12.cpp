@@ -3,6 +3,7 @@ import std;
 import game_board01;
 import game_piece01;
 import grid01;
+import grid02;
 import spreadsheet_cell;
 
 using namespace std;
@@ -55,5 +56,14 @@ namespace study12_001
 }
 namespace study12_002
 {
-	
+	using namespace game_board03;
+	void study003() {
+		constexpr size_t height{ 10 };
+		Grid<int, 10, height> my_grid;
+		// ReSharper disable once CppJoinDeclarationAndAssignment
+		Grid<int, 10, 10> another_grid;
+		my_grid.at(2, 3) = 42;
+		another_grid = std::move(my_grid);
+		cout << another_grid.at(2, 3).value_or(0) << "\n";
+	}
 }

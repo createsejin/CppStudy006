@@ -1,6 +1,7 @@
 export module grid02;
 import std;
 
+using namespace std;
 namespace game_board03
 {
 	export template<typename T, size_t Width, size_t Height>
@@ -8,7 +9,7 @@ namespace game_board03
 	{
 		size_t width_{ 0 }, height_{ 0 };
 		std::optional<T> cells_[Width][Height];
-		void verify_coordinate(size_t x, size_t y) const;
+		static void verify_coordinate(size_t x, size_t y);
 	public:
 		Grid() = default;
 		~Grid() = default;
@@ -25,15 +26,15 @@ namespace game_board03
 	};
 
 	template<typename T, size_t Width, size_t Height>
-	void Grid<T, Width, Height>::verify_coordinate(const size_t x, const size_t y) const {
+	void Grid<T, Width, Height>::verify_coordinate(const size_t x, const size_t y) {
 		if (x >= Width) {
 			throw std::out_of_range{
-				std::format("{} must be less than {}.", x, width_)
+				std::format("{} must be less than {}.", x, Width)
 			};
 		}
 		if (y >= Height) {
 			throw std::out_of_range{
-				std::format("{} must be less than {}.", y, height_)
+				std::format("{} must be less than {}.", y, Height)
 			};
 		}
 	}
@@ -55,7 +56,10 @@ namespace game_board03
 		const size_t max_height{ rhs.height_ < Height ? rhs.height_ : Height };
 		for (size_t i{ 0 }; i < max_width; ++i) {
 			for (size_t j{ 0 }; j < max_height; ++j) {
-				cells_[i][j] = std::move(rhs.cells_[i][j]);
+				if (rhs.cells_[i][j].has_value()) {
+					cout << std::format("rhs cells[{0}][{1}] = {2}\n", i, j, rhs.cells_[i][j].value());
+					cells_[i][j].value() = std::move(rhs.cells_[i][j].value());
+				}
 			}
 		}
 		return *this;
