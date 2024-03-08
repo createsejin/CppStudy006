@@ -23,6 +23,8 @@ namespace game_board03
 
 		[[nodiscard]] static auto get_height() { return Height; }
 		[[nodiscard]] static auto get_width() { return Width; }
+
+		void swap(Grid& other) noexcept;
 	};
 
 	template<typename T, size_t Width, size_t Height>
@@ -38,30 +40,19 @@ namespace game_board03
 			};
 		}
 	}
-	//p.639
-	template<typename T, size_t Width, size_t Height>
-	Grid<T, Width, Height>::Grid(Grid&& src) noexcept {
-		const size_t max_width{ src.width_ < Width ? src.width_ : Width };
-		const size_t max_height{ src.height_ < Height ? src.height_ : Height };
-		for (size_t i{0}; i < max_width; ++i) {
-			for (size_t j{0}; j < max_height; ++j) {
-				cells_[i][j] = std::move(src.cells_[i][j]);
-			}
-		}
+	export template<typename T, size_t Width, size_t Height>
+		void swap(Grid<T, Width, Height>& first, Grid<T, Width, Height>& second) noexcept {
+		first.swap(second);
 	}
 
-	template<typename T, size_t Width, size_t Height>
+	template<typename T, size_t Width, size_t Height> // reference p.454
+	Grid<T, Width, Height>::Grid(Grid&& src) noexcept { // move constructor
+		game_board03::swap(*this, src);
+	}
+
+	template<typename T, size_t Width, size_t Height> // move assignment operator
 	Grid<T, Width, Height>& Grid<T, Width, Height>::operator=(Grid&& rhs) noexcept {
-		const size_t max_width{ rhs.width_ < Width ? rhs.width_ : Width };
-		const size_t max_height{ rhs.height_ < Height ? rhs.height_ : Height };
-		for (size_t i{ 0 }; i < max_width; ++i) {
-			for (size_t j{ 0 }; j < max_height; ++j) {
-				if (rhs.cells_[i][j].has_value()) {
-					cout << std::format("rhs cells[{0}][{1}] = {2}\n", i, j, rhs.cells_[i][j].value());
-					cells_[i][j].value() = std::move(rhs.cells_[i][j].value());
-				}
-			}
-		}
+		game_board03::swap(*this, rhs);
 		return *this;
 	}
 
@@ -75,4 +66,11 @@ namespace game_board03
 		verify_coordinate(x, y);
 		return cells_[x][y];
 	} // p.639 บฮลอ
+
+	template<typename T, size_t Width, size_t Height>
+	void Grid<T, Width, Height>::swap(Grid& other) noexcept	{
+		std::swap(width_, other.width_);
+		std::swap(height_, other.height_);
+		std::swap(cells_, other.cells_);
+	}
 }

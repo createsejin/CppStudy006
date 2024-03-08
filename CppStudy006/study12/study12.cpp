@@ -63,7 +63,10 @@ namespace study12_002
 		// ReSharper disable once CppJoinDeclarationAndAssignment
 		Grid<int, 10, 10> another_grid;
 		my_grid.at(2, 3) = 42;
+		cout << std::format("my_grid = {}\n", my_grid.at(2, 3).value_or(0));
+		//another_grid = my_grid;
 		another_grid = std::move(my_grid);
-		cout << another_grid.at(2, 3).value_or(0) << "\n";
+		//cout << std::format("my_grid = {}\n", my_grid.at(2, 3).value_or(0));
+		cout << std::format("another_grid = {}\n", another_grid.at(2, 3).value_or(0));
 	}
 }
