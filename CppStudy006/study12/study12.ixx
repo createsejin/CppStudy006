@@ -36,6 +36,7 @@ export
 	namespace study12_006
 	{
 		void study017();
+		void test001();
 	}
 	namespace study12_007
 	{

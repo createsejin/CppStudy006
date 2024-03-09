@@ -181,6 +181,7 @@
     <ClCompile Include="study12\grid05.ixx" />
     <ClCompile Include="study12\grid05_main.ixx" />
     <ClCompile Include="study12\grid05_string.ixx" />
+    <ClCompile Include="study12\grid_test01.cpp" />
     <ClCompile Include="study12\study12.cpp" />
     <ClCompile Include="study12\study12.ixx" />
     <ClCompile Include="study10\weather_prediction.ixx" />
@@ -188,6 +189,7 @@
   <ItemGroup>
     <ClInclude Include="study11\AnotherFile.h" />
     <ClInclude Include="study11\FirstFile.h" />
+    <ClInclude Include="study12\grid_test01.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

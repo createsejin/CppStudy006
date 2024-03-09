@@ -1,5 +1,6 @@
 module;
 #include <cstring>
+#include "grid_test01.h"
 module study12;
 import std;
 import game_board01;
@@ -301,6 +302,12 @@ namespace study12_006
 		decltype(auto) result1{ add(1, 2) };
 		cout << std::format("result{} = {}", 1, result1);
 	}
+	void test001() {
+		using namespace grid_test01;
+		Grid<int> my_grid{ 2, 2 };
+		my_grid.at(0, 0) = 23;
+		my_grid.print_at("my_grid"sv, 0, 0);
+	}
 }
 namespace study12_007
 {
@@ -314,5 +321,9 @@ namespace study12_007
 		cout << std::format("{:.8L}", pi_float) << endl;
 		constexpr auto pi_long_double{ pi<long double> };
 		cout << std::format("{:.12L}", pi_long_double) << endl;
+		constexpr auto pi_std{ std::numbers::pi };
+		cout << std::format("{:.15}", pi_std) << endl;
 	}
+	// p.667 concept
+	
 }

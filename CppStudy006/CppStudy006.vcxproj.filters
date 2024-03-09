@@ -165,6 +165,15 @@
     <ClCompile Include="study12\grid05_string.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="study12\game_board06.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\game_piece06.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid_test01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">
@@ -172,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="study11\AnotherFile.h">
       <Filter>Source Files\study11</Filter>
+    </ClInclude>
+    <ClInclude Include="study12\grid_test01.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
