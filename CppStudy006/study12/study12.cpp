@@ -197,7 +197,7 @@ namespace study12_005
 		return std::nullopt;
 	}
 
-	template<typename T, size_t N> // 배열 참조를 이용하면 컴파일 시점에 배열 크기를 알 수 있다.
+	template<typename T, size_t N> // 배열 참조 'T(&arr)[N]'를 이용하면 컴파일 시점에 배열 크기를 알 수 있다.
 	std::optional<size_t> Find(const T& value, const T(&arr)[N]) {
 		return Find(value, arr, N);
 	}
@@ -252,7 +252,12 @@ namespace study12_005
 		const char* word{ "two" };
 		const char* words[]{ "one", "two", "three", "four" };
 		constexpr size_t sizeWords{ std::size(words) };
-		const auto res{ Find(word, words, sizeWords) };
+		auto res{ Find(word, words, sizeWords) };
 		print_res(res, 1);
+		res = Find(word, words); // 이것도 가능하다.
+		print_res(res, 2);
+		res = Find<const char*>(word, words, sizeWords); // 이렇게 하면 오버로드된 버전(<const char*>)이 아닌
+		//	T=const char* 원본 버전이 호출된다.
+		print_res(res, 3);
 	}
 }
