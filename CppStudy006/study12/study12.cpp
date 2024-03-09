@@ -183,8 +183,8 @@ namespace study12_005
 	template<typename T1>
 	using other_name2 = MyClassTemplate<T1, double>;
 	void study011() {
-		other_name1 my_class1;
-		other_name2<int> my_class2;
+		/*other_name1 my_class1;
+		other_name2<int> my_class2;*/
 	}
 	// p.657 함수 템플릿
 	template<typename T>
@@ -259,5 +259,38 @@ namespace study12_005
 		res = Find<const char*>(word, words, sizeWords); // 이렇게 하면 오버로드된 버전(<const char*>)이 아닌
 		//	T=const char* 원본 버전이 호출된다.
 		print_res(res, 3);
+	}
+	// p.662
+	template<typename ReturnType = long long, typename T1, typename T2>
+	ReturnType add(const T1& t1, const T2& t2) { return t1 + t2; }
+
+	void study015() {
+		auto result1{ add<long long, int, int>(1, 2) };
+		cout << std::format("result{} = {}", 1, result1);
+		auto result2{ add<long long>(1, 2) };
+		cout << std::format("result{} = {}", 2, result2);
+	}
+	template<typename T1, typename ReturnType, typename T2> // parameter의 마지막에 있는 매개변수만 추론 가능하다.
+	// 따라서 이 경우에는 T1과 ReturnType을 명시적으로 지정해야한다.
+	ReturnType add(const T1& t1, const T2& t2) { return t1 + t2; }
+
+	void study016() {
+		auto result1{ add<int, long long>(1, 2) };
+		cout << std::format("result{} = {}", 1, result1);
+		auto result2{ add(1, 2) }; // default 값을 지정한 add
+		cout << std::format("result{} = {}", 2, result2);
+	}
+	// p.663
+	template<typename T1, typename T2> // p.664
+	decltype(auto) add(const T1& t1, const T2& t2) { return t1 + t2; }
+
+	const std::string message{ "Test" };
+	const std::string& get_string() { return message; }
+
+	void study017() {
+		auto s1{ get_string() }; // const와 reference 지시자가 사라짐. 즉, 복제 연산이 발생함.
+		const auto& s2{ get_string() }; // 이렇게 명시적으로 지정해야한다.
+		decltype(auto) s3{ get_string() }; // 이렇게 하면 const나 ref가 제거되지 않는다.
+		
 	}
 }

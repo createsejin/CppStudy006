@@ -30,5 +30,8 @@ export
 		void study012();
 		void study013();
 		void study014();
+		void study015();
+		void study016();
+		void study017();
 	}
 }
