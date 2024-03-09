@@ -280,6 +280,11 @@ namespace study12_005
 		auto result2{ add(1, 2) }; // default 값을 지정한 add
 		cout << std::format("result{} = {}", 2, result2);
 	}
+	
+	
+}
+namespace study12_006
+{
 	// p.663
 	template<typename T1, typename T2> // p.664
 	decltype(auto) add(const T1& t1, const T2& t2) { return t1 + t2; }
@@ -290,7 +295,10 @@ namespace study12_005
 	void study017() {
 		auto s1{ get_string() }; // const와 reference 지시자가 사라짐. 즉, 복제 연산이 발생함.
 		const auto& s2{ get_string() }; // 이렇게 명시적으로 지정해야한다.
+		cout << s2 << "\n";
 		decltype(auto) s3{ get_string() }; // 이렇게 하면 const나 ref가 제거되지 않는다.
-		
+		cout << s3 << "\n";
+		decltype(auto) result1{ add(1, 2) };
+		cout << std::format("result{} = {}", 1, result1);
 	}
 }

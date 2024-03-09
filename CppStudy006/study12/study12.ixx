@@ -31,7 +31,10 @@ export
 		void study013();
 		void study014();
 		void study015();
-		void study016();
+		void study016();		
+	}
+	namespace study12_006
+	{
 		void study017();
 	}
 }
