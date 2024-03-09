@@ -324,6 +324,45 @@ namespace study12_007
 		constexpr auto pi_std{ std::numbers::pi };
 		cout << std::format("{:.15}", pi_std) << endl;
 	}
+
 	// p.667 concept
+	template<typename T> // constraints expression
+	concept c01 = sizeof(T) == 4;
+	// simple requirement
+	template<typename T> // p.669
+	concept incrementable = requires(T x) { x++; ++x; };
+	// type requirement
+	template<typename T>
+	concept c02 = requires { typename T::value_type; };
+	// compound requirement
+	template<typename T>
+	concept c03 = requires (T x, T y) {
+		{ x.swap(y) } noexcept;
+	};
+	// p.670
+	template<typename T>
+	concept c04 = requires (const T x)
+	{
+		{ x.size() } -> convertible_to<size_t>;
+	};
 	
+	template<typename T>
+	concept comparable = requires(const T a, const T b)
+	{
+		{ a == b } -> convertible_to<bool>;
+		{ a < b } -> convertible_to<bool>;
+	};
+
+	// nested requirement
+	template<typename T>
+	concept c05 = requires (T t)
+	{
+		requires sizeof(t) == 4;
+		++t; --t; t++; t--;
+	};
+	// combine concept
+	template<typename T>
+	concept decrementable = requires(T x) { x--; --x; };
+	template<typename T>
+	concept increment_and_decrementable = incrementable<T> && decrementable<T>;
 }
