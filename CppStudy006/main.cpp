@@ -1,5 +1,5 @@
 // CppStudy006.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 //#define _CRTDBG_MAP_ALLOC
 //#include <stdlib.h>
 //#include <crtdbg.h>

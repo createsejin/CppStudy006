@@ -73,7 +73,9 @@ namespace game_board06
 	template<typename T>
 	void Grid<T>::print_at(const std::string_view name, size_t x, size_t y) const {
 		verifyCoordinate(x, y);
-		std::cout << std::format("{}.at({}, {}) = {}\n", name, x, y, at(x, y).value_or(""));
+		if (at(x, y).has_value())
+			std::cout << std::format("{}.at({}, {}) = {}\n", name, x, y, at(x, y).value());
+		else std::cout << std::format("{}.at({}, {}) = null\n", name, x, y);
 	}
 
 	export template<typename T>

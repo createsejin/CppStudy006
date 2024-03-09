@@ -61,6 +61,8 @@ namespace game_board06
 	}
 	void Grid<const char*>::print_at(const std::string_view name, const size_t x, const size_t y) const {
 		verifyCoordinate(x, y);
-		std::cout << std::format("{}.at({}, {}) = {}\n", name, x, y, at(x, y).value_or(""));
+		if (at(x, y).has_value())
+			std::cout << std::format("{}.at({}, {}) = {}\n", name, x, y, at(x, y).value());
+		else std::cout << std::format("{}.at({}, {}) = null\n", name, x, y);
 	}
 }
