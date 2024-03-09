@@ -37,4 +37,8 @@ export
 	{
 		void study017();
 	}
+	namespace study12_007
+	{
+		void study018();
+	}
 }

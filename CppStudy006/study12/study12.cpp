@@ -302,3 +302,17 @@ namespace study12_006
 		cout << std::format("result{} = {}", 1, result1);
 	}
 }
+namespace study12_007
+{
+	// p.665 축약 함수 템플릿 구문
+	decltype(auto) add(const auto& t1, const auto& t2) { return t1 + t2; }
+	// p.666 변수 템플릿
+	template<typename T>
+	constexpr T pi{ T{3.141592653897} };
+	void study018() {
+		constexpr float pi_float{ pi<float> };
+		cout << std::format("{:.8L}", pi_float) << endl;
+		constexpr auto pi_long_double{ pi<long double> };
+		cout << std::format("{:.12L}", pi_long_double) << endl;
+	}
+}
