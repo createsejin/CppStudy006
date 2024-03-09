@@ -315,8 +315,7 @@ namespace study12_007
 	decltype(auto) add(const auto& t1, const auto& t2) { return t1 + t2; }
 	// p.666 º¯¼ö ÅÛÇÃ¸´
 	template<typename T>
-	constexpr T pi{ T{3.141592653897} };
-	void study018() {
+	constexpr T pi{ T{3.141592653897} };void study018() {
 		constexpr float pi_float{ pi<float> };
 		cout << std::format("{:.8L}", pi_float) << endl;
 		constexpr auto pi_long_double{ pi<long double> };
@@ -365,4 +364,19 @@ namespace study12_007
 	concept decrementable = requires(T x) { x--; --x; };
 	template<typename T>
 	concept increment_and_decrementable = incrementable<T> && decrementable<T>;
+	// p.672 standard concept
+	class Foo {};
+	template<typename T>
+	concept isDerivedFromFoo = derived_from<T, Foo>;
+
+	template<typename T>
+	concept IsConvertibleToBool = convertible_to<T, bool>;
+	// combination concept
+	template<typename T>
+	concept DefaultAndCopyConstructible = default_initializable<T> && copy_constructible<T>;
+
+	void study019() {
+		incrementable auto value1{ 1 };
+		//incrementable auto value2{ "abc"s }; // error
+	}
 }
