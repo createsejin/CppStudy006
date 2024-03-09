@@ -171,9 +171,6 @@
     <ClCompile Include="study12\game_piece06.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="study12\grid_test01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">
