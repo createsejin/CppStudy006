@@ -42,5 +42,6 @@ export
 	{
 		void study018();
 		void study019();
+		void study020();
 	}
 }

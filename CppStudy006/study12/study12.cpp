@@ -379,4 +379,40 @@ namespace study12_007
 		incrementable auto value1{ 1 };
 		//incrementable auto value2{ "abc"s }; // error
 	}
+	// p.673
+	template<convertible_to<bool> T>
+	void handle(const T& t) {}
+
+	template<incrementable T>
+	void process01(const T& t) {}
+
+	template<typename T> requires incrementable<T>
+	void process02(const T& t) {}
+
+	template<typename T> requires std::convertible_to<T, bool>
+	void process03(const T& t) {}
+
+	template<typename T> requires requires(T x) { x++; ++x; }
+	void process04(const T& t) {}
+
+	template<typename T> requires(sizeof(T) == 4)
+	void process05(const T& t) {}
+
+	template<typename T> requires incrementable<T> && decrementable<T>
+	void process06(const T& t) {}
+
+	template<typename T> requires std::is_arithmetic_v<T> // type trait
+	void process07(const T& t) {}
+
+	template<typename T> // trailing requires syntax
+	void process08(const T& t) requires incrementable<T> {}
+
+	// 축약 함수 템플릿 구문
+	void process09(const incrementable auto& t) {}
+
+	void study020() {
+		process02(2);
+		//process("str"s);
+	}
+	// p.676 제약 조건 포함 관계
 }
