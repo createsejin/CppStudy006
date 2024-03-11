@@ -267,7 +267,6 @@ namespace study13_001
     auto remove_last_ws(std::string& str) -> std::string {
         const auto pos = str.find_last_of(' ');
         const auto last_pos = str.size() - 1;
-        cout << std::format("pos = {}, last_pos = {}" , pos , last_pos) << endl;
         if (pos == last_pos) str.erase(last_pos);
         return str;
 	}
@@ -300,5 +299,32 @@ namespace study13_001
             input += c;
         }
         cout << "result: \n" << input << endl;
+    }
+    // peek()
+    void get_reservation_data3() {
+        string guest_name;
+        int party_size{ 0 };
+        cout << "input Name and party size> ";
+        cin >> noskipws;
+        while (true) {
+            char ch{ static_cast<char>(cin.peek()) };
+            if (!cin) break;
+            if (std::isdigit(ch)) break;
+            cin >> ch;
+            if (!cin) break;
+            guest_name += ch;
+        }
+        if (cin) cin >> party_size;
+        if (!cin) {
+            cerr << "Error getting party size." << endl;
+            return;
+        }
+        cout << std::format("Thank you '{}', party of {}" , 
+            remove_last_ws(guest_name) , party_size) << endl;
+        if (party_size > 10) cout << "An extra gratuity will apply." << endl;
+        cin >> skipws;
+    }
+    export void study016() {
+        get_reservation_data3();
     }
 }
