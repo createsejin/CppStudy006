@@ -1,4 +1,4 @@
-module;
+ï»¿module;
 #include <cstring>
 #include <stdio.h>
 #include <time.h>
@@ -43,7 +43,6 @@ namespace study13_001
         return args;
 	}
 
-    // p.695ºÎÅÍ
     auto get_args_from_wchar(const size_t argc) -> std::vector<std::wstring> {
         std::vector<std::wstring> args{ argc, L"" };
         for (size_t i{0}; i < argc; ++i) {
@@ -52,7 +51,7 @@ namespace study13_001
         return args;
 	}
 
-	export void study002() { // my custom command args input getter
+	export void study002() { // my custom command args input getter 
 		const std::string prompt{ "cmd> " };
 		std::cout << prompt;
         const auto args{ std::move(get_args_from_input_v2(4)) };
@@ -61,11 +60,18 @@ namespace study13_001
         }
 	}
     export void study002_02() {
-        wcout << L"¾È³çÇÏ¼¼¿ä.";
+        wcout << L"ì•ˆë…•í•˜ì„¸ìš”.";
         wcout << L"cmd> ";
-        std::wstring input;
+        std::wstring input;        
         wcin >> input;
         wcout << input;
+	}
+    export void study002_03() {
+        cout << "cmd> ";
+        const auto args{ std::move(get_args_from_wchar(3)) };
+        for (const auto& arg : args) {
+            wcout << arg << "\n";
+        }
 	}
 
     export void study003() { // p.690
