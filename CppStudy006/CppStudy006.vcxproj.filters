@@ -25,6 +25,9 @@
     <Filter Include="Source Files\study12">
       <UniqueIdentifier>{88215678-bfe7-4ecf-ac4b-0036c94cfae5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\study13">
+      <UniqueIdentifier>{eb9d37e0-1b92-4250-8692-68218a573cd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -182,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="study12\key_value_pair02.ixx">
       <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\study13.ixx">
+      <Filter>Source Files\study13</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

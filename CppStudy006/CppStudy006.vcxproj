@@ -188,6 +188,7 @@
     <ClCompile Include="study12\study12.cpp" />
     <ClCompile Include="study12\study12.ixx" />
     <ClCompile Include="study10\weather_prediction.ixx" />
+    <ClCompile Include="study12\study13.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\AnotherFile.h" />

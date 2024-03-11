@@ -4,12 +4,12 @@
 //#include <stdlib.h>
 //#include <crtdbg.h>
 import std;
-import study12;
+import study13;
 
 using namespace std;
 int main() {
 	cout << "Program start\n";
-	study12_009::study027();
+	
 	//_CrtDumpMemoryLeaks();
 }
 
