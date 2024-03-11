@@ -524,4 +524,27 @@ namespace study12_009
 		auto result4{ concat(2.0, "fff"s) };
 		cout << std::format("result{} = {}\n", 4, result4);
 	}
+	// 12-6
+	template<typename T> requires std::integral<T> || std::floating_point<T>
+	std::optional<size_t> Find(const T& value, const T* arr, const size_t size) {
+		for (size_t i{0}; i < size; ++i) {
+			if (arr[i] == value) {
+				return i;
+			}
+		}
+		return nullopt;
+	}
+	void study027() {
+		constexpr int arr[]{ 1, 2, 3, 4, 5, 6 };
+		constexpr size_t size { std::size(arr) };
+		constexpr int find_value{ 4 };
+		auto result1{ Find(find_value, arr, size) };
+		if (result1.has_value()) cout << std::format("result{} index = {}\n", 1, result1.value());
+
+		constexpr char arr2[]{ 'a', 'b', 'c', 'd', 'e' };
+		constexpr size_t size2{ std::size(arr2) };
+		constexpr char find_value2{ 'd' };
+		auto result2{ Find(find_value2, arr2, size2) };
+		if (result1.has_value()) cout << std::format("result{} index = {}\n", 2, result2.value());
+	}
 }
