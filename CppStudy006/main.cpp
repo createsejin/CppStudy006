@@ -12,7 +12,7 @@ int main() { // .\x64\Debug\CppStudy006.exe
 	SetConsoleOutputCP(65001);
 
 	cout << "Program start\n";
-	study13_001::study013();
+	study13_001::study015();
 	return 0;
 }
 

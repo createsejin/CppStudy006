@@ -251,7 +251,7 @@ namespace study13_001
                 if (cin.fail())
                     cout << "unget() failed" << endl;
                 break; // 루프를 벗어나서
-	        } // 그게 아니면 문자를 붙여준다.
+	        }
             guestName += ch;
         }
         // partySize에 정수를 입력한다.
@@ -282,6 +282,23 @@ namespace study13_001
         cout << std::format("result2 = |{}|" , result) << endl;
 	}
     export void study014() {
-	    
+        get_reservation_data2();
+    }
+    // p.701 putback()
+    export void study015() {
+        cout << "input> ";
+        string input;
+    	char c;
+        cin >> noskipws;
+        while (cin >> c) {
+            if (c == 'y') {
+                // y가 나오면 그 자리에 e로 putback 해놓는다.
+                cin.putback('e');
+                continue;
+            }
+            if (c == ';') break;
+            input += c;
+        }
+        cout << "result: \n" << input << endl;
     }
 }
