@@ -212,6 +212,7 @@ namespace study13_001
         return name;
 	}
 
+    // multi lines user input implement function
     auto read_user_input(std::wistream& stream) {
         std::wstring input;
         wchar_t next;
@@ -233,4 +234,54 @@ namespace study13_001
         const wstring input{ read_user_input(std::wcin) };
         wcout << "user input =\n" << input << endl;
 	}
+    // p.700
+    auto remove_last_ws(std::string& str) -> std::string;
+
+    void get_reservation_data2() {
+        string guestName;
+        int partySize{ 0 };
+        cout << "Name and number of guests> ";
+        char ch;
+        cin >> noskipws; // 스트림이 공백(ws)을 건너뛰지 말고 일반 문자처럼 취급하게 한다.
+        while (cin >> ch) {
+            // 만약 숫자라면
+	        if (isdigit(ch)) {
+                // 스트림을 하나 되돌린 후
+                cin.unget();
+                if (cin.fail())
+                    cout << "unget() failed" << endl;
+                break; // 루프를 벗어나서
+	        } // 그게 아니면 문자를 붙여준다.
+            guestName += ch;
+        }
+        // partySize에 정수를 입력한다.
+        if (cin) cin >> partySize;
+        if (!cin) {
+            cerr << "Error getting party size." << endl;
+            return;
+        }
+        cout << std::format("Thank you '{}', party of {}" , remove_last_ws(guestName), partySize) << endl;
+        if (partySize > 10) cout << "An extra gratuity will apply." << endl;
+        cin >> skipws; // 공백 무시 설정을 다시 reset한다.
+	}
+    auto remove_last_ws(std::string& str) -> std::string {
+        const auto pos = str.find_last_of(' ');
+        const auto last_pos = str.size() - 1;
+        cout << std::format("pos = {}, last_pos = {}" , pos , last_pos) << endl;
+        if (pos == last_pos) str.erase(last_pos);
+        return str;
+	}
+
+    export void study013() {
+        //get_reservation_data2();
+        auto str1{ "test str1 "s };
+        auto result{ remove_last_ws(str1) };
+        cout << std::format("result1 = |{}|" , result) << endl;
+        auto str2{ "test str2"s };
+        result = remove_last_ws(str2);
+        cout << std::format("result2 = |{}|" , result) << endl;
+	}
+    export void study014() {
+	    
+    }
 }
