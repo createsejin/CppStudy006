@@ -26,8 +26,8 @@ namespace game_board06
 		Grid<T>::at(xDest, yDest) = std::move(Grid<T>::at(xSrc, ySrc));
 		Grid<T>::at(xSrc, ySrc).reset();
 		/*this->at(xDest, yDest) = std::move(this->at(xSrc, ySrc));
-		this->at(xSrc, ySrc).reset(); ÀÌ·¸°Ô ÇØµµ µÈ´Ù. ´Ü, at ¸Ş¼­µå¸¦ ¿À¹ö¶óÀÌµå ÇÑ °æ¿ì, ÆÄ»ıÅ¬·¡½ºÀÇ ¿À¹ö¶óÀÌµåÇÑ ¹öÀüÀÌ
-		È£ÃâµÈ´Ù. */
+		this->at(xSrc, ySrc).reset(); ì´ë ‡ê²Œ í•´ë„ ëœë‹¤. ë‹¨, at ë©”ì„œë“œë¥¼ ì˜¤ë²„ë¼ì´ë“œ í•œ ê²½ìš°, íŒŒìƒí´ë˜ìŠ¤ì˜ ì˜¤ë²„ë¼ì´ë“œí•œ ë²„ì „ì´
+		í˜¸ì¶œëœë‹¤. */
 	}
 
 }

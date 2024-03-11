@@ -1,4 +1,4 @@
-﻿module;
+module;
 #include <cstring>
 #include <stdio.h>
 #include <time.h>
@@ -66,7 +66,7 @@ namespace study13_001
         wcin >> input;
         wcout << input;
 	}
-    export void study002_03() {
+    export void study002_03() { // 한글의 wstring, wcin, wcout의 입출력을 해결해줬다. (main 함수 참고)
         cout << "cmd> ";
         const auto args{ std::move(get_args_from_wchar(3)) };
         for (const auto& arg : args) {
@@ -144,5 +144,29 @@ namespace study13_001
         string user_input2;
         cin >> user_input1 >> user_input2;
         cout << "User input was: " << user_input1 << ", " << user_input2 << endl;
+	}
+
+    export void study008() { // p.695
+        int user_input;
+        cin >> user_input;
+        cout << "user input = " << user_input << endl;
+	}
+
+    void get_reservation_data() {
+        wstring guest_name;
+        int party_size;
+        cout << "Name and number of guests> ";
+        wcin >> guest_name >> party_size;
+        wcout << "Thank you, " << guest_name << "." << endl;
+        if (party_size > 10) {
+            cout << "An extra gratuity will apply." << endl;
+        }
+	}
+    export void study009() {
+        get_reservation_data();
+	}
+
+    export void study010() { // p.697
+		
 	}
 }

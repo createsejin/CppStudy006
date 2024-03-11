@@ -12,7 +12,7 @@ namespace game_board05
 		static void verify_coordinate(size_t x, size_t y);
 	public:
 		Grid() = default;
-		~Grid() = default; // virtual method¿Í destructor´Â ¸Ş¼­µå ÅÛÇÃ¸´À¸·Î ¸¸µé ¼ö ¾ø´Ù.
+		~Grid() = default; // virtual methodì™€ destructorëŠ” ë©”ì„œë“œ í…œí”Œë¦¿ìœ¼ë¡œ ë§Œë“¤ ìˆ˜ ì—†ë‹¤.
 		Grid(const Grid& src) = default;
 		Grid& operator=(const Grid& rhs) = default;
 
@@ -104,9 +104,9 @@ namespace game_board05
 	template<typename T, size_t Width, size_t Height>
 	template<typename E, size_t Width2, size_t Height2>
 	Grid<T, Width, Height>& Grid<T, Width, Height>::operator=(Grid<E, Width2, Height2>&& rhs) noexcept {
-		// ¿©±â¼­ ¸Å°³º¯¼ö rhs´Â rvalue°¡ ¾Æ´Ñ lvalue´Ù.
-		// µû¶ó¼­ lvalue¸¦ rvalue·Î Ä³½ºÆÃÇÏ´Â std::move¸¦ »ç¿ëÇØ¼­ »ı¼ºÀÚ¸¦ È£ÃâÇØ¾ß
-		// move constructor¸¦ È£ÃâÇÒ ¼ö ÀÖ´Ù.
+		// ì—¬ê¸°ì„œ ë§¤ê°œë³€ìˆ˜ rhsëŠ” rvalueê°€ ì•„ë‹Œ lvalueë‹¤.
+		// ë”°ë¼ì„œ lvalueë¥¼ rvalueë¡œ ìºìŠ¤íŒ…í•˜ëŠ” std::moveë¥¼ ì‚¬ìš©í•´ì„œ ìƒì„±ìë¥¼ í˜¸ì¶œí•´ì•¼
+		// move constructorë¥¼ í˜¸ì¶œí•  ìˆ˜ ìˆë‹¤.
 		Grid temp{ std::move(rhs) };
 		swap(temp);
 		return *this;
@@ -121,7 +121,7 @@ namespace game_board05
 	const std::optional<T>& Grid<T, Width, Height>::at(const size_t x, const size_t y) const {
 		verify_coordinate(x, y);
 		return cells_[x][y];
-	} // p.639 ºÎÅÍ
+	} // p.639 ë¶€í„°
 
 	template<typename T, size_t Width, size_t Height>
 	void Grid<T, Width, Height>::swap(Grid& other) noexcept {

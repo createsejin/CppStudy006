@@ -1,4 +1,4 @@
-﻿#include <Windows.h>
+#include <Windows.h>
 import std;
 import study13;
 
@@ -12,7 +12,7 @@ int main() { // .\x64\Debug\CppStudy006.exe
 	SetConsoleOutputCP(65001);
 
 	cout << "Program start\n";
-	study13_001::study002_03();
+	study13_001::study009();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

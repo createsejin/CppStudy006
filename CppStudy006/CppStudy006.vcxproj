@@ -177,7 +177,6 @@
     <ClCompile Include="study12\grid01.ixx" />
     <ClCompile Include="study12\grid02.ixx" />
     <ClCompile Include="study12\grid03.ixx" />
-    <ClCompile Include="study12\grid04.ixx" />
     <ClCompile Include="study12\grid05.ixx" />
     <ClCompile Include="study12\grid05_main.ixx" />
     <ClCompile Include="study12\grid05_string.ixx" />
@@ -188,7 +187,8 @@
     <ClCompile Include="study12\study12.cpp" />
     <ClCompile Include="study12\study12.ixx" />
     <ClCompile Include="study10\weather_prediction.ixx" />
-    <ClCompile Include="study12\study13.ixx" />
+    <ClCompile Include="study12\grid04.ixx" />
+    <ClCompile Include="study13\study13.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\AnotherFile.h" />
