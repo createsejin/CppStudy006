@@ -18,7 +18,7 @@ namespace study13_001
         std::getline(std::cin, input);
         const auto pos = input.find(prompt);
         if (pos != std::string::npos) {
-            input.erase(pos, 5);
+            input.erase(pos, prompt.size());
         }
         ranges::transform(input.begin(), input.end(), input.begin(),
             [](const unsigned char c) {
@@ -33,12 +33,18 @@ namespace study13_001
         return args;
     }
 
-	export void study002() {
+	export void study002() { // my custom command args input getter
 		const std::string prompt{ "cmd> " };
 		std::cout << prompt;
         const auto args{ get_args_from_input(prompt) };
         for (const auto& arg : args) {
             cout << arg << "\n";
         }
+	}
+
+    export void study003() { // p.690
+        cout << "abc";
+        cout.flush();
+        cout << "def" << endl;
 	}
 }
