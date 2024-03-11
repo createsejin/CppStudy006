@@ -8,7 +8,7 @@ int main() {
 	std::wcout.imbue(std::locale());
 
 	cout << "Program start\n";
-	study13_001::study005();
+	study13_001::study006();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
