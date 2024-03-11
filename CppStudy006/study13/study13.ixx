@@ -213,7 +213,7 @@ namespace study13_001
 	}
 
     // multi lines user input implement function
-    auto read_user_input(std::wistream& stream) {
+    auto read_user_input(std::wistream& stream, const bool semicolon = false) -> std::wstring {
         std::wstring input;
         wchar_t next;
         while (stream.get(next)) {
@@ -221,7 +221,7 @@ namespace study13_001
             if (next == L'\n') wcout << L"> ";
             input += next;
         }
-        input += L';';
+        if (semicolon) input += L';';
         return input;
 	}
     export void study011() {
@@ -326,5 +326,11 @@ namespace study13_001
     }
     export void study016() {
         get_reservation_data3();
+    }
+    // test to convert from multi lines user input to args vector
+    export void study017() {
+        cout << "cmd> ";
+        const wstring user_input{ read_user_input(std::wcin) };
+        wcout << "user input =\n" << user_input << endl;
     }
 }
