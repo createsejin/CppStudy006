@@ -47,4 +47,21 @@ namespace study13_001
         cout.flush();
         cout << "def" << endl;
 	}
+
+    export void study004() { // p.690
+        if (cout.good()) { cout << "All good.\n"; }
+        cout.flush();
+        if (cout.fail()) { cerr << "Unable to flush to stdout." << endl; }
+        if (!cout) { cerr << "Unable to flush to stdout." << endl; }
+	}
+
+    export void study005() {
+        cout.exceptions(ios::failbit | ios::badbit | ios::eofbit);
+        try {
+            cout << "Hello World." << endl;
+        } catch (const ios_base::failure& ex) {
+            cerr << "Caught exception: " << ex.what() << ", error code = " << ex.code() << endl;
+        }
+        cout.clear();
+	}
 }
