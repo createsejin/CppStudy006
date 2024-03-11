@@ -35,13 +35,37 @@ namespace study13_001
         return args;
     }
 
+    auto get_args_from_input_v2(const size_t argc) -> std::vector<std::string> {
+        std::vector args{ argc, ""s };
+        for (size_t i{0}; i < argc; ++i) {
+            cin >> args[i];
+        }
+        return args;
+	}
+
+    // p.695부터
+    auto get_args_from_wchar(const size_t argc) -> std::vector<std::wstring> {
+        std::vector<std::wstring> args{ argc, L"" };
+        for (size_t i{0}; i < argc; ++i) {
+            wcin >> args[i];
+        }
+        return args;
+	}
+
 	export void study002() { // my custom command args input getter
 		const std::string prompt{ "cmd> " };
 		std::cout << prompt;
-        const auto args{ get_args_from_input(prompt) };
+        const auto args{ std::move(get_args_from_input_v2(4)) };
         for (const auto& arg : args) {
             cout << arg << "\n";
         }
+	}
+    export void study002_02() {
+        wcout << L"안녕하세요.";
+        wcout << L"cmd> ";
+        std::wstring input;
+        wcin >> input;
+        wcout << input;
 	}
 
     export void study003() { // p.690
@@ -101,7 +125,7 @@ namespace study13_001
         localtime_s(&buf, &t);
         cout << put_time(&buf, "%c") << endl;
 
-        cout << "This should be: \"Quoted string with \\\"embedded quotes\\\".\": " <<
+        cout << R"(This should be: "Quoted string with \"embedded quotes\".": )" <<
             quoted("Quoted string with \"embedded quotes\".") << endl;
 
         cout.precision(5);
@@ -109,6 +133,10 @@ namespace study13_001
 	}
 
     export void study007() {
-		
+        cout << "cmd> ";
+        string user_input1;
+        string user_input2;
+        cin >> user_input1 >> user_input2;
+        cout << "User input was: " << user_input1 << ", " << user_input2 << endl;
 	}
 }

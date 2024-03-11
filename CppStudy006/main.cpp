@@ -2,13 +2,13 @@ import std;
 import study13;
 
 using namespace std;
-int main() {
+int main() { // .\x64\Debug\CppStudy006.exe
 	// set locale to UTF-8, and set wcout to use it
 	std::locale::global(std::locale("en_US.utf8"));
 	std::wcout.imbue(std::locale());
 
 	cout << "Program start\n";
-	study13_001::study006();
+	study13_001::study002_02();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
