@@ -470,16 +470,22 @@ namespace study12_008
 namespace study12_009
 {
 	using namespace key_value_pair01;
+	// 12-1
 	void study023() {
 		vector<KeyValuePair<int, std::string>> my_vec;
 		my_vec.emplace_back(1, "아나나나"s);
-		my_vec.emplace_back(2, "배세희는 바보다.");
-		my_vec.emplace_back(3, "대우형도 바보다.");
-		my_vec.emplace_back(4, "그런데 나는 훠어어얼씬 바보다.");
+		my_vec.emplace_back(2, "배세희는 바보다."s);
+		my_vec.emplace_back(3, "대우형도 바보다."s);
+		my_vec.emplace_back(4, "그런데 나는 훠어어얼씬 바보다."s);
 		for (const auto& pair : my_vec) {
 			auto key{ pair.get_key() };
 			auto value{ pair.get_value() };
 			cout << std::format("{}: {}\n", key, value);
-		}
+		}		
+	}
+	// 12-2
+	void study024() {
+		const KeyValuePair<const char*, const char*> kv{ "ddd", "나는 누구일까" };
+		cout << std::format("{}: {}\n", kv.get_key(), kv.get_value());
 	}
 }

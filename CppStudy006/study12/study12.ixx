@@ -52,5 +52,6 @@ export
 	namespace study12_009
 	{
 		void study023();
+		void study024();
 	}
 }
