@@ -53,5 +53,7 @@ export
 	{
 		void study023();
 		void study024();
+		void study025();
+		void study026();
 	}
 }

@@ -14,6 +14,7 @@ import spreadsheet_cell;
 import game_board06;
 import game_piece06;
 import key_value_pair01;
+import key_value_pair02;
 
 using namespace std;
 namespace study12_001
@@ -469,9 +470,9 @@ namespace study12_008
 // p.680 연습문제
 namespace study12_009
 {
-	using namespace key_value_pair01;
 	// 12-1
 	void study023() {
+		using namespace key_value_pair01;
 		vector<KeyValuePair<int, std::string>> my_vec;
 		my_vec.emplace_back(1, "아나나나"s);
 		my_vec.emplace_back(2, "배세희는 바보다."s);
@@ -485,7 +486,29 @@ namespace study12_009
 	}
 	// 12-2
 	void study024() {
+		using namespace key_value_pair01;
 		const KeyValuePair<const char*, const char*> kv{ "ddd", "나는 누구일까" };
 		cout << std::format("{}: {}\n", kv.get_key(), kv.get_value());
+	}
+	// 12-3
+	void study025() {
+		using namespace key_value_pair02;
+		const KeyValuePair kv{ 2, 3.4 };
+		cout << std::format("{}: {}\n", kv.get_key(), kv.get_value());
+	}
+	// 12-4
+	template<typename T>
+	concept is_string_convertible = requires(T t) { std::to_string(t); };
+
+	template<typename T1, typename T2> requires is_string_convertible<T1> && is_string_convertible<T2>
+	auto concat(const T1& t1, const T2& t2) -> std::string {
+		return std::to_string(t1) + std::to_string(t2);
+	}
+
+	void study026() {
+		std::string result1{ concat<int, double>(1, 2.3) };
+		cout << std::format("result{} = {}\n", 1, result1);
+		auto result2{ concat(2.0, 3) };
+		cout << std::format("result{} = {}\n", 2, result2);
 	}
 }
