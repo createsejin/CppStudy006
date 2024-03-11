@@ -414,5 +414,17 @@ namespace study12_007
 		process02(2);
 		//process("str"s);
 	}
-	// p.676 제약 조건 포함 관계
+}
+namespace study12_008
+{	// p.676 제약 조건 포함 관계
+	template<typename T> requires std::integral<T>
+	void process(const T& t) { cout << "integral<T>" << endl; }
+
+	template<typename T> requires (std::integral<T> && sizeof(T) == 4)
+	void process(const T& t) { cout << "integral<T> && sizeof(T) == 4" << endl; }
+
+	void study021() {
+		process(int{ 1 });
+		process(short{ 2 });
+	}
 }

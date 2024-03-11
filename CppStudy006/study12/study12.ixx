@@ -44,4 +44,8 @@ export
 		void study019();
 		void study020();
 	}
+	namespace study12_008
+	{
+		void study021();
+	}
 }
