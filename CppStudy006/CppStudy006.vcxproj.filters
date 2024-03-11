@@ -138,38 +138,38 @@
     <ClCompile Include="study12\game_piece01.ixx">
       <Filter>Source Files\study12</Filter>
     </ClCompile>
-    <ClCompile Include="study12\game_board01.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="study12\game_board01.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\study12</Filter>
     </ClCompile>
-    <ClCompile Include="study12\grid01.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="study12\grid02.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="study12\grid03.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="study12\grid04.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="study12\grid05.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="study12\grid05_main.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="study12\grid05_string.ixx">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="study12\game_board01.ixx">
+      <Filter>Source Files\study12</Filter>
     </ClCompile>
     <ClCompile Include="study12\game_board06.ixx">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\study12</Filter>
     </ClCompile>
     <ClCompile Include="study12\game_piece06.ixx">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid01.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid02.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid03.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid04.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid05.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid05_main.ixx">
+      <Filter>Source Files\study12</Filter>
+    </ClCompile>
+    <ClCompile Include="study12\grid05_string.ixx">
+      <Filter>Source Files\study12</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

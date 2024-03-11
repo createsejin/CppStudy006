@@ -427,4 +427,48 @@ namespace study12_008
 		process(int{ 1 });
 		process(short{ 2 });
 	}
+
+	template<typename T>
+	std::optional<size_t> Find(const T& value, const T* arr, const size_t size) {
+		for (size_t i{ 0 }; i < size; ++i) {
+			if (arr[i] == value) {
+				return i;
+			}
+		}
+		return std::nullopt;
+	}
+
+	template<std::floating_point T>
+	bool AreEqual(T x, T y, int precision = 2) {
+		return fabs(x - y) <= numeric_limits<T>::epsilon() * fabs(x + y) * precision ||
+			fabs(x - y) < numeric_limits<T>::min();
+	}
+
+	template<std::floating_point T>
+	std::optional<size_t> Find(const T& value, const T* arr, const size_t size) {
+		for (size_t i{0}; i < size; ++i) {
+			if (AreEqual(arr[i], value)) {
+				return i;
+			}
+		}
+		return nullopt;
+	}
+	void print_res(const std::optional<size_t> res, const unsigned int num) {
+		if (res.has_value()) cout << std::format("result{} = {}\n", num, res.value());
+		else cout << std::format("result{} = not found.\n", num);
+	}
+
+	void study022() {
+		constexpr double d_arr[] { 1.2, 2.3, 3.4, 5.5, 6.2 };
+		constexpr double find_d{ 3.4 };
+		const auto res{ Find<double>(find_d, d_arr, std::size(d_arr)) };
+		print_res(res, 1);
+	}
+}
+// p.680 연습문제
+namespace study12_009
+{
+	void study023() {
+		
+	}
 }
