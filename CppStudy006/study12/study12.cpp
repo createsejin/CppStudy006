@@ -13,6 +13,7 @@ import grid05;
 import spreadsheet_cell;
 import game_board06;
 import game_piece06;
+import key_value_pair01;
 
 using namespace std;
 namespace study12_001
@@ -468,7 +469,17 @@ namespace study12_008
 // p.680 연습문제
 namespace study12_009
 {
+	using namespace key_value_pair01;
 	void study023() {
-		
+		vector<KeyValuePair<int, std::string>> my_vec;
+		my_vec.emplace_back(1, "아나나나"s);
+		my_vec.emplace_back(2, "배세희는 바보다.");
+		my_vec.emplace_back(3, "대우형도 바보다.");
+		my_vec.emplace_back(4, "그런데 나는 훠어어얼씬 바보다.");
+		for (const auto& pair : my_vec) {
+			auto key{ pair.get_key() };
+			auto value{ pair.get_value() };
+			cout << std::format("{}: {}\n", key, value);
+		}
 	}
 }

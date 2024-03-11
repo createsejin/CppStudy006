@@ -171,6 +171,9 @@
     <ClCompile Include="study12\grid05_string.ixx">
       <Filter>Source Files\study12</Filter>
     </ClCompile>
+    <ClCompile Include="study12\key_value_pair01.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">
