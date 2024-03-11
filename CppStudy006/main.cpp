@@ -12,7 +12,8 @@ int main() { // .\x64\Debug\CppStudy006.exe
 	SetConsoleOutputCP(65001);
 
 	cout << "Program start\n";
-	study13_001::study009();
+	study13_001::study012();
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

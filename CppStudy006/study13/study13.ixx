@@ -166,7 +166,71 @@ namespace study13_001
         get_reservation_data();
 	}
 
-    export void study010() { // p.697
-		
+    export int study010() { // p.697
+        cout << "Enter number on separate lines to add.\n"
+            << "Use Ctrl+Z followed by Enter to finish\n";
+        int sum{ 0 };
+
+        if (!cin.good()) {
+            cerr << "Standard input is in a bad state!" << endl;
+            return 1;
+        }
+
+        while (!cin.bad()) {
+            int number;
+            cin >> number;
+            if (cin.good()) {
+                sum += number;
+            } else if (cin.eof()) { break; }
+            else if (cin.fail()) {
+                cin.clear();
+                string badToken;
+                cin >> badToken;
+                cerr << "WARNING: Bad input encountered: " << badToken << endl;
+            }            
+        }
+        cout << "The sum is " << sum << endl;
+        return 0;
+	}
+    // p.698
+    string read_name(istream& stream) {
+        string name;
+        while (stream) {
+            const int next{ stream.get() };
+            if (!stream || next == std::char_traits<char>::eof()) break;
+            name += static_cast<char>(next);
+        }
+        return name;
+	}
+    string read_name_v2(istream& stream) {
+        string name;
+        char next;
+        while (stream.get(next)) {
+            if (next == ';') break;
+            name += next;
+        }
+        return name;
+	}
+
+    auto read_user_input(std::wistream& stream) {
+        std::wstring input;
+        wchar_t next;
+        while (stream.get(next)) {
+	        if (next == L';') break;
+            if (next == L'\n') wcout << L"> ";
+            input += next;
+        }
+        input += L';';
+        return input;
+	}
+    export void study011() {
+        cout << "input names> ";
+        const auto name{ read_name_v2(std::cin) };
+        cout << "name = " << name << endl;
+	}
+    export void study012() {
+        cout << "cmd> ";
+        const wstring input{ read_user_input(std::wcin) };
+        wcout << "user input =\n" << input << endl;
 	}
 }
