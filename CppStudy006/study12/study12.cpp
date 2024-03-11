@@ -504,11 +504,24 @@ namespace study12_009
 	auto concat(const T1& t1, const T2& t2) -> std::string {
 		return std::to_string(t1) + std::to_string(t2);
 	}
+	// 12-5
+	auto concat(const std::string& t1, const std::string& t2) -> std::string
+	{
+		return t1 + t2;
+	}
+	template<typename T> requires is_string_convertible<T>
+	auto concat(const T& t1, const std::string& t2) -> std::string {
+		return std::to_string(t1) + t2;
+	}
 
 	void study026() {
 		std::string result1{ concat<int, double>(1, 2.3) };
 		cout << std::format("result{} = {}\n", 1, result1);
 		auto result2{ concat(2.0, 3) };
 		cout << std::format("result{} = {}\n", 2, result2);
+		auto result3{ concat("ddd"s, "fff"s) };
+		cout << std::format("result{} = {}\n", 3, result3);
+		auto result4{ concat(2.0, "fff"s) };
+		cout << std::format("result{} = {}\n", 4, result4);
 	}
 }
