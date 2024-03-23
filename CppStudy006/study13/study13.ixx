@@ -2,9 +2,16 @@ module;
 #include <cstring>
 #include <stdio.h>
 #include <time.h>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <format>
+#include <ranges>
+#include <filesystem>
+
+
 export module study13;
 
-import std;
 using namespace std;
 
 namespace study13_001
@@ -334,4 +341,25 @@ namespace study13_001
         wcout << "user input =\n" << user_input << endl;
     }
     // p.702 getline() 부터
+    export void study018() {
+	    
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
