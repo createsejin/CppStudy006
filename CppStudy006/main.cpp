@@ -6,7 +6,7 @@ import study13;
 
 
 using namespace std;
-int main() { // .\x64\Debug\CppStudy006.exe
+int main(int argc, char* argv[]) { // .\x64\Debug\CppStudy006.exe
 	// set locale to UTF-8, and set wcout to use it
 	std::locale::global(std::locale("ko_KR.utf8"));
 	std::wcout.imbue(std::locale());
@@ -15,7 +15,7 @@ int main() { // .\x64\Debug\CppStudy006.exe
 	SetConsoleOutputCP(65001);
 
 	cout << "Program start\n";
-	study13_001::study017();
+	study13_003::study025();
 	return 0;
 }
 

@@ -5,6 +5,7 @@ module;
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <format>
 #include <ranges>
 #include <filesystem>
@@ -341,24 +342,186 @@ namespace study13_001
     }
     // p.702 getline() 부터
     export void study018() {
-	    
+        constexpr unsigned kBufferSize { 50 };
+        char buffer[kBufferSize] { 0 };
+        cin.getline(buffer, kBufferSize);
+
+        string myString;
+        std::getline(cin, myString);
+    }
+    export void study019() {
+        cout << "Enter multiple lines of text.\n"
+            << "Use an ; character to signal the end of the text.\n> ";
+        string myString;
+        std::getline(cin, myString, ';');
+        cout << std::format("Read text: \"{}\"", myString) << endl;
+    }
+    export void study020() {
+        cin.imbue(locale { "en_US.utf8" });
+        int i;
+        cin >> i;
+        cout << i << endl;
     }
 }
+namespace study13_002
+{
+    class Muffin
+    {
+    public:
+        virtual ~Muffin() = default;
 
+        auto getDesription() const -> const string& { return description_; }
+        void setDescription(const string_view description) {
+            description_ = description;
+        }
+        auto getSize() const -> int { return size_; }
+        void setSize(const int size) { size_ = size; }
 
+        auto hasChocolateChips() const -> bool { return hasChocolateChips_; }
+        void setHasChocolateChips(const bool hasChips) { hasChocolateChips_ = hasChips; }
+    private:
+        string description_;
+        int size_ { 0 };
+        bool hasChocolateChips_ { false };
+    };
+    
+    export void study021() {
+        cout << "Enter tokens.\n";
+        ostringstream outStream;
+        while (cin) {
+            string nextToken;
+            cout << "Next token: ";
+            cin >> nextToken;
+            if (!cin || nextToken == "done") break;
+            outStream << nextToken << "\t";
+        }
+        cout << "The end result is: " << outStream.str();
+    }
+    std::optional<Muffin> createMuffin(istringstream& stream) {
+        Muffin muffin;
+        // Description size chips
 
+        string description;
+        int size;
+        bool hasChips;
 
+        stream >> description >> size >> boolalpha >> hasChips;
+        if (stream) {
+            muffin.setSize(size);
+            muffin.setDescription(description);
+            muffin.setHasChocolateChips(hasChips);
+            return muffin;
+        }
+        else return std::nullopt;
+    }
+}
+namespace study13_003 // p.708 파일 스트림
+{
+    export int study022(const int argc, char* argv[]) {
+        ofstream outFile ("test.txt", ios_base::trunc );
+        if (!outFile.good()) {
+            cerr << "Error while opening file!" << endl;
+            return -1;
+        }
+        outFile << "There were" << argc << " arguments to this program." << endl;
+        outFile << "They are: ";
+        for (int i { 1 }; i < argc; ++i) {
+            outFile << std::format("{} ", argv[i]);
+        }
+        return 0;
+    }
+    export void study023() {
+        ofstream fout { "test.out", ios_base::trunc };
+        if (!fout) {
+            cerr << "Error opening test.out for writing" << endl;
+        }
 
+        // 1. "54321" 스트링을 파일에 출력한다.
+        fout << "54321";
 
+        // 2. 현재 위치가 5인지 확인한다.
+        streampos curPos { fout.tellp() };
+        if (5 == curPos) {
+            cout << "Test passed: Currently at position 5" << endl;
+        }
+        else {
+            cout << "Test failed: Not at position 5" << endl;
+        }
 
+        // 3. 스트림의 현재 위치를 2로 옮긴다.
+        fout.seekp(2, ios_base::beg);
 
+        // 4. 위치 2에 0을 쓰고 스트림을 닫는다.
+        fout << 0;
+        fout.close();
 
+        // 5. test.out에 대한 입력 스트림을 연다.
+        ifstream fin { "test.out" };
+        if (!fin) {
+            cerr << "Error opening test.out for reading" << endl;
+        }
 
+        // 6. 첫번째 토큰을 정수 타입의 값으로 읽는다.
+        int testVal;
+        fin >> testVal;
+        if (!fin) {
+            cerr << "Error reading from file" << endl;
+        }
 
+        // 7. 읽은 값이 54021인지 확인한다.
+        const int expected { 54021 };
+        if (testVal == expected) {
+            cout << format("Test passed: Value is {}", expected) << endl;
+        }
+        else {
+            cout << format("Test failed: Value is not {} (it was {})", expected, testVal) << endl;
+        }
+    }
+    export void study024() {
+        ifstream inFile { "input.txt" };
+        ofstream outFile { "output.txt" };
+        // inFile과 outFile을 연결한다.
+        inFile.tie(&outFile);
+        // outFile에 텍스트를 쓴다. std::endl이 입력되기 전까지는 내보내지 않는다.
+        outFile << "Hello there!";
+        // outFile을 아직 내보내지 않은 상태다.
+        // inFile에서 텍스트를 읽는다. 그러면 outFile에 대해 flush()가 호출된다.
+        string nextToken;
+        inFile >> nextToken;
+        // 이제 outFile이 내보내졌다.
+        cout << nextToken << endl;
+    }
 
+    bool changeNumberForID(const string_view filename, const int id, const string_view newNumber) {
+        fstream ioData { filename.data() };
+        if (!ioData) {
+            cerr << "Error while opening file " << filename << endl;
+            return false;
+        }
+        // 파일을 끝까지 반복한다.
+        while (ioData) {
+            // 다음 ID를 읽는다. 이 위치는 나중에 tellg의 위치가 된다.
+            int idRead;
+            ioData >> idRead;
+            if (!ioData) break;
 
+            // 현재 레코드가 수정할 대상인지 확인한다.
+            if (idRead == id) {
+                // 쓰기 위치를 현재 읽기 위치로 이동한다.
+                ioData.seekp(ioData.tellg());
+                // 한 칸 띄운 뒤 새 번호를 쓴다.
+                ioData << " " << newNumber;
+                break;
+            }
 
-
-
-
-
+            // 현재 위치에서 숫자를 읽어서 스트림의 위치를 다음 레코드로 이동한다.
+            string number;
+            ioData >> number;
+        }
+        return true;
+    }
+    export void study025() {
+        string filename { "phone.txt" };
+        changeNumberForID(filename, 253, "010-0232-0434");
+    }
+}
