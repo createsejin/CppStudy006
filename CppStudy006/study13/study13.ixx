@@ -9,7 +9,6 @@ module;
 #include <ranges>
 #include <filesystem>
 
-
 export module study13;
 
 using namespace std;

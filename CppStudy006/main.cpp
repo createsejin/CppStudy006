@@ -1,6 +1,9 @@
 #include <Windows.h>
-import std;
+#include <locale>
+#include <iostream>
+
 import study13;
+
 
 using namespace std;
 int main() { // .\x64\Debug\CppStudy006.exe
