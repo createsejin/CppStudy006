@@ -1,9 +1,8 @@
 #include <Windows.h>
-#include <locale>
 #include <iostream>
+#include <locale>
 
-import study13;
-
+#include "restudy001.h"
 
 using namespace std;
 int main(int argc, char* argv[]) { // .\x64\Debug\CppStudy006.exe
@@ -15,7 +14,7 @@ int main(int argc, char* argv[]) { // .\x64\Debug\CppStudy006.exe
 	SetConsoleOutputCP(65001);
 
 	cout << "Program start\n";
-	study13_003::study025();
+	restudy001::case001::study001();
 	return 0;
 }
 

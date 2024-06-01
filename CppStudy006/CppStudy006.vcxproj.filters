@@ -28,6 +28,9 @@
     <Filter Include="Source Files\study13">
       <UniqueIdentifier>{eb9d37e0-1b92-4250-8692-68218a573cd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\restudy001">
+      <UniqueIdentifier>{e612aacc-1f3e-4ba7-b2c7-211fbf3f5070}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -189,6 +192,9 @@
     <ClCompile Include="study12\grid04.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="restudy001.cpp">
+      <Filter>Source Files\restudy001</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="study11\FirstFile.h">
@@ -199,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="study12\grid_test01.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="restudy001.h">
+      <Filter>Source Files\restudy001</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

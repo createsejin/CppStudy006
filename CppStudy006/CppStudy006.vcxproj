@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="restudy001.cpp" />
     <ClCompile Include="study12\game_board01.cpp" />
     <ClCompile Include="study12\game_board01.ixx" />
     <ClCompile Include="study12\game_board06.ixx" />
@@ -191,6 +192,7 @@
     <ClCompile Include="study13\study13.ixx" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="restudy001.h" />
     <ClInclude Include="study11\AnotherFile.h" />
     <ClInclude Include="study11\FirstFile.h" />
     <ClInclude Include="study12\grid_test01.h" />
